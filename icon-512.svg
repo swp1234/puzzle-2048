@@ -1,0 +1,66 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d68910;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffeaa7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fdcb6e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d68910;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d35400;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0f0f23"/>
+
+  <!-- Rounded background -->
+  <rect x="32" y="32" width="448" height="448" rx="64" fill="url(#grad-bg)" opacity="0.15"/>
+
+  <!-- Grid background -->
+  <g fill="#f39c12" opacity="0.1">
+    <!-- Vertical lines -->
+    <rect x="149" y="106" width="4" height="300" />
+    <rect x="256" y="106" width="4" height="300" />
+    <rect x="363" y="106" width="4" height="300" />
+    <!-- Horizontal lines -->
+    <rect x="106" y="149" width="300" height="4" />
+    <rect x="106" y="256" width="300" height="4" />
+    <rect x="106" y="363" width="300" height="4" />
+  </g>
+
+  <!-- Tile 1 (top-left) -->
+  <g>
+    <rect x="106" y="106" width="117" height="117" rx="12" fill="url(#grad-tile1)"/>
+    <text x="164.5" y="177" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#2c3e50" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Tile 2 (top-center-right) -->
+  <g>
+    <rect x="289" y="106" width="117" height="117" rx="12" fill="url(#grad-tile2)"/>
+    <text x="347.5" y="177" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  </g>
+
+  <!-- Tile 3 (center-left) -->
+  <g>
+    <rect x="106" y="289" width="117" height="117" rx="12" fill="url(#grad-tile2)"/>
+    <text x="164.5" y="360" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#ffffff" text-anchor="middle">8</text>
+  </g>
+
+  <!-- Tile 4 (center-right) -->
+  <g>
+    <rect x="289" y="289" width="117" height="117" rx="12" fill="url(#grad-tile3)"/>
+    <text x="347.5" y="360" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#ffffff" text-anchor="middle">16</text>
+  </g>
+</svg>

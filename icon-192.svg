@@ -1,0 +1,62 @@
+<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d68910;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffeaa7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fdcb6e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d68910;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad-tile3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="192" height="192" fill="#0f0f23"/>
+
+  <!-- Rounded background -->
+  <rect x="12" y="12" width="168" height="168" rx="24" fill="url(#grad-bg)" opacity="0.15"/>
+
+  <!-- Grid background -->
+  <g fill="#f39c12" opacity="0.1">
+    <!-- Vertical lines -->
+    <rect x="50" y="40" width="2" height="112" />
+    <rect x="96" y="40" width="2" height="112" />
+    <rect x="142" y="40" width="2" height="112" />
+    <!-- Horizontal lines -->
+    <rect x="40" y="50" width="112" height="2" />
+    <rect x="40" y="96" width="112" height="2" />
+    <rect x="40" y="142" width="112" height="2" />
+  </g>
+
+  <!-- Tile 1 (top-left) -->
+  <g>
+    <rect x="40" y="40" width="44" height="44" rx="4" fill="url(#grad-tile1)"/>
+    <text x="62" y="71" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Tile 2 (top-right) -->
+  <g>
+    <rect x="108" y="40" width="44" height="44" rx="4" fill="url(#grad-tile2)"/>
+    <text x="130" y="71" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  </g>
+
+  <!-- Tile 3 (bottom-left) -->
+  <g>
+    <rect x="40" y="108" width="44" height="44" rx="4" fill="url(#grad-tile2)"/>
+    <text x="62" y="139" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">8</text>
+  </g>
+
+  <!-- Tile 4 (bottom-right) -->
+  <g>
+    <rect x="108" y="108" width="44" height="44" rx="4" fill="url(#grad-tile3)"/>
+    <text x="130" y="139" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">16</text>
+  </g>
+</svg>

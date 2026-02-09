@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "合并瓷砖以达到2048",
+    "score": "分数",
+    "best": "最高分",
+    "newGame": "新游戏",
+    "undo": "撤销",
+    "undoWithAd": "观看广告撤销",
+    "gameOver": "游戏结束!",
+    "finalScore": "最终分数",
+    "victory": "你赢了!",
+    "reached2048": "你已达到2048!",
+    "currentScore": "当前分数",
+    "continue": "继续游戏",
+    "playAgain": "再玩一次"
+  }
+}

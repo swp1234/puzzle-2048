@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Combinez les tuiles pour atteindre 2048",
+    "score": "Score",
+    "best": "Meilleur",
+    "newGame": "Nouveau Jeu",
+    "undo": "Annuler",
+    "undoWithAd": "Annuler (Regarder Pub)",
+    "gameOver": "Fin de Jeu!",
+    "finalScore": "Score Final",
+    "victory": "Vous avez gagné!",
+    "reached2048": "Vous avez atteint 2048!",
+    "currentScore": "Score Actuel",
+    "continue": "Continuer le Jeu",
+    "playAgain": "Rejouer"
+  }
+}

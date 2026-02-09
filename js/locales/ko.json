@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "타일을 합쳐 2048을 만드세요",
+    "score": "점수",
+    "best": "최고점",
+    "newGame": "새 게임",
+    "undo": "되돌리기",
+    "undoWithAd": "광고 보고 되돌리기",
+    "gameOver": "게임 오버!",
+    "finalScore": "최종 점수",
+    "victory": "승리!",
+    "reached2048": "2048을 달성했습니다!",
+    "currentScore": "현재 점수",
+    "continue": "계속하기",
+    "playAgain": "다시 하기"
+  }
+}

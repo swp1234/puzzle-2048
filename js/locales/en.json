@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Combine tiles to reach 2048",
+    "score": "Score",
+    "best": "Best",
+    "newGame": "New Game",
+    "undo": "Undo",
+    "undoWithAd": "Undo (Watch Ad)",
+    "gameOver": "Game Over!",
+    "finalScore": "Final Score",
+    "victory": "You Won!",
+    "reached2048": "You've reached 2048!",
+    "currentScore": "Current Score",
+    "continue": "Continue Playing",
+    "playAgain": "Play Again"
+  }
+}

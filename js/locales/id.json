@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Gabungkan ubin untuk mencapai 2048",
+    "score": "Skor",
+    "best": "Terbaik",
+    "newGame": "Permainan Baru",
+    "undo": "Batalkan",
+    "undoWithAd": "Batalkan (Tonton Iklan)",
+    "gameOver": "Permainan Berakhir!",
+    "finalScore": "Skor Akhir",
+    "victory": "Anda Menang!",
+    "reached2048": "Anda telah mencapai 2048!",
+    "currentScore": "Skor Saat Ini",
+    "continue": "Lanjutkan Bermain",
+    "playAgain": "Bermain Lagi"
+  }
+}

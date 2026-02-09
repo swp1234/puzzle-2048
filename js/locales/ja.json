@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "タイルを合わせて2048を目指そう",
+    "score": "スコア",
+    "best": "ベスト",
+    "newGame": "新しいゲーム",
+    "undo": "戻す",
+    "undoWithAd": "広告を見て戻す",
+    "gameOver": "ゲームオーバー!",
+    "finalScore": "最終スコア",
+    "victory": "あなたが勝ちました!",
+    "reached2048": "2048に到達しました!",
+    "currentScore": "現在のスコア",
+    "continue": "プレイを続ける",
+    "playAgain": "もう一度プレイ"
+  }
+}

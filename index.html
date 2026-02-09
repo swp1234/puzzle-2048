@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2048 - 중독성 있는 숫자 퍼즐 게임. 타일을 합쳐 2048을 목표로 하세요.">
+    <meta name="theme-color" content="#0f0f23">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="2048 - 숫자 퍼즐 게임">
+    <meta property="og:description" content="타일을 합쳐 2048을 만드는 중독성 있는 퍼즐 게임">
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://dopabrain.com/puzzle-2048/">
+    <meta property="og:image" content="https://dopabrain.com/puzzle-2048/icon-512.svg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "2048",
+        "description": "숫자 타일을 합쳐 2048을 만드는 퍼즐 게임",
+        "genre": "Puzzle",
+        "applicationCategory": "Game",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "KRW",
+            "price": "0",
+            "availability": "https://schema.org/OnlineOnly"
+        }
+    }
+    </script>
+
+    <title data-i18n="game.title">2048 - 숫자 퍼즐</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon-192.svg">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Language">🌐</button>
+        <div id="lang-menu" class="lang-menu hidden">
+            <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+            <button class="lang-option" data-lang="en">🇺🇸 English</button>
+            <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+            <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+            <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+            <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+            <button class="lang-option" data-lang="id">🇮🇩 Bahasa</button>
+            <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+            <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+            <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+            <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+            <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+        </div>
+    </div>
+
+    <!-- Top Ad -->
+    <div class="ad-container ad-top">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3600813755953882"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Main Game Container -->
+    <div class="game-wrapper">
+        <header class="game-header">
+            <div class="header-left">
+                <h1 data-i18n="game.title">2048</h1>
+                <p class="subtitle" data-i18n="game.subtitle">Combine tiles to reach 2048</p>
+            </div>
+            <div class="header-right">
+                <div class="score-board">
+                    <div class="score-item">
+                        <span class="score-label" data-i18n="game.score">Score</span>
+                        <div class="score-value" id="score">0</div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label" data-i18n="game.best">Best</span>
+                        <div class="score-value" id="best-score">0</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Grid -->
+        <div class="game-container">
+            <div class="grid-background">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid" id="game-grid"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-primary" id="new-game-btn" data-i18n="game.newGame">New Game</button>
+            <button class="btn btn-secondary" id="undo-btn" data-i18n="game.undo">Undo</button>
+            <button class="btn btn-secondary" id="undo-ad-btn" data-i18n="game.undoWithAd">Undo (Ad)</button>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div class="modal hidden" id="game-over-modal">
+            <div class="modal-content">
+                <h2 data-i18n="game.gameOver">Game Over!</h2>
+                <p id="game-over-message" class="modal-message"></p>
+                <div class="modal-stats">
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="game.finalScore">Final Score</span>
+                        <span class="stat-value" id="final-score">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="game.best">Best Score</span>
+                        <span class="stat-value" id="final-best">0</span>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="restart-btn" data-i18n="game.playAgain">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victory Modal -->
+        <div class="modal hidden" id="victory-modal">
+            <div class="modal-content">
+                <h2 data-i18n="game.victory">You Won!</h2>
+                <p class="modal-message" data-i18n="game.reached2048">You've reached 2048!</p>
+                <div class="modal-stats">
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="game.currentScore">Current Score</span>
+                        <span class="stat-value" id="victory-score">0</span>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="continue-btn" data-i18n="game.continue">Continue Playing</button>
+                    <button class="btn btn-secondary" id="restart-from-victory-btn" data-i18n="game.newGame">New Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Ad -->
+    <div class="ad-container ad-bottom">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3600813755953882"
+             data-ad-slot="9876543210"
+             data-ad-format="horizontal"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Interstitial Ad Container -->
+    <div class="ad-container ad-interstitial hidden" id="interstitial-ad">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3600813755953882"
+             data-ad-slot="5555555555"
+             data-ad-format="vertical"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- GA4 Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J8GSWM40TV', {
+            'anonymize_ip': true,
+            'allow_google_signals': false
+        });
+    </script>
+
+    <!-- i18n and App Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

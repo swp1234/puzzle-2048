@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Combina fichas para llegar a 2048",
+    "score": "Puntuación",
+    "best": "Mejor",
+    "newGame": "Nuevo Juego",
+    "undo": "Deshacer",
+    "undoWithAd": "Deshacer (Ver Anuncio)",
+    "gameOver": "¡Juego Terminado!",
+    "finalScore": "Puntuación Final",
+    "victory": "¡Ganaste!",
+    "reached2048": "¡Has alcanzado 2048!",
+    "currentScore": "Puntuación Actual",
+    "continue": "Continuar Jugando",
+    "playAgain": "Jugar de Nuevo"
+  }
+}

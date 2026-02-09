@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Kombiniere Kacheln um 2048 zu erreichen",
+    "score": "Punktzahl",
+    "best": "Bestes Ergebnis",
+    "newGame": "Neues Spiel",
+    "undo": "Rückgängig",
+    "undoWithAd": "Rückgängig (Anzeige anschauen)",
+    "gameOver": "Spiel Vorbei!",
+    "finalScore": "Endpunktstand",
+    "victory": "Du hast gewonnen!",
+    "reached2048": "Du hast 2048 erreicht!",
+    "currentScore": "Aktuelle Punktzahl",
+    "continue": "Weiterspielen",
+    "playAgain": "Nochmal spielen"
+  }
+}

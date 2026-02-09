@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "2048'e ulaşmak için karoları birleştir",
+    "score": "Puan",
+    "best": "En İyi",
+    "newGame": "Yeni Oyun",
+    "undo": "Geri Al",
+    "undoWithAd": "Geri Al (Reklam İzle)",
+    "gameOver": "Oyun Bitti!",
+    "finalScore": "Son Puan",
+    "victory": "Kazandın!",
+    "reached2048": "2048'e ulaştın!",
+    "currentScore": "Mevcut Puan",
+    "continue": "Oyunmaya Devam Et",
+    "playAgain": "Tekrar Oyna"
+  }
+}

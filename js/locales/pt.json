@@ -1,0 +1,18 @@
+{
+  "game": {
+    "title": "2048",
+    "subtitle": "Combine peças para atingir 2048",
+    "score": "Pontuação",
+    "best": "Melhor",
+    "newGame": "Novo Jogo",
+    "undo": "Desfazer",
+    "undoWithAd": "Desfazer (Assistir Anúncio)",
+    "gameOver": "Fim de Jogo!",
+    "finalScore": "Pontuação Final",
+    "victory": "Você Venceu!",
+    "reached2048": "Você atingiu 2048!",
+    "currentScore": "Pontuação Atual",
+    "continue": "Continuar Jogando",
+    "playAgain": "Jogar Novamente"
+  }
+}
