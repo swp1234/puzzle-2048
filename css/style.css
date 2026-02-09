@@ -65,6 +65,19 @@
     box-sizing: border-box;
     -webkit-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch Optimization */
+button, a, input, [role="button"], [role="link"] {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input[type="text"], textarea {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 html {
@@ -78,6 +91,8 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ============================================
