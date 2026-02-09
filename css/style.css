@@ -665,7 +665,53 @@ body {
 }
 
 /* ============================================
-   Print Styles
+   WCAG 2.1 AA Accessibility Improvements
+   ============================================ */
+
+/* Focus Visible Styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid #f39c12;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Fallback for older browsers */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid #f39c12;
+    outline-offset: 2px;
+}
+
+/* Minimum Touch Target Size (44x44px) */
+button, a[href], input[type="button"],
+input[type="submit"], [role="button"] {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Text Color Contrast */
+.score-value, .high-score-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: more) {
+    body {
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+    button {
+        border: 2px solid #ffffff;
+    }
+}
+
+/* Print Styles
    ============================================ */
 
 @media print {
