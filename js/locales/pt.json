@@ -14,5 +14,8 @@
     "currentScore": "Pontuação Atual",
     "continue": "Continuar Jogando",
     "playAgain": "Jogar Novamente"
+  },
+  "recommendations": {
+    "title": "Mais Jogos"
   }
 }

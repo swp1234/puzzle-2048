@@ -14,5 +14,8 @@
     "currentScore": "現在のスコア",
     "continue": "プレイを続ける",
     "playAgain": "もう一度プレイ"
+  },
+  "recommendations": {
+    "title": "他のゲームも遊ぼう"
   }
 }

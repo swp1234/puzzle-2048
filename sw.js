@@ -3,7 +3,7 @@
  * Enables offline functionality and caching
  */
 
-const CACHE_NAME = 'puzzle2048-v1';
+const CACHE_NAME = 'puzzle2048-v2';
 const ASSETS_TO_CACHE = [
     './',
     'index.html',
@@ -54,49 +54,25 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network first, fallback to cache
 self.addEventListener('fetch', (event) => {
-    // Only handle GET requests
-    if (event.request.method !== 'GET') {
-        return;
-    }
-
-    // Skip cross-origin requests
-    if (!event.request.url.startsWith(self.location.origin)) {
-        return;
-    }
+    if (event.request.method !== 'GET') return;
+    if (!event.request.url.startsWith(self.location.origin)) return;
 
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            // Return cached response if available
-            if (response) {
-                return response;
-            }
-
-            // Otherwise fetch from network
-            return fetch(event.request).then((response) => {
-                // Don't cache error responses
-                if (!response || response.status !== 200) {
-                    return response;
-                }
-
-                // Cache successful responses
+        fetch(event.request).then((response) => {
+            if (response && response.status === 200) {
                 const responseToCache = response.clone();
                 caches.open(CACHE_NAME).then((cache) => {
                     cache.put(event.request, responseToCache);
                 });
-
-                return response;
-            }).catch(() => {
-                // Return offline page or cached response if network fails
-                return caches.match(event.request).then((cachedResponse) => {
-                    return cachedResponse || new Response('Offline - cached content not available', {
-                        status: 503,
-                        statusText: 'Service Unavailable',
-                        headers: new Headers({
-                            'Content-Type': 'text/plain'
-                        })
-                    });
+            }
+            return response;
+        }).catch(() => {
+            return caches.match(event.request).then((cachedResponse) => {
+                return cachedResponse || new Response('Offline', {
+                    status: 503,
+                    headers: { 'Content-Type': 'text/plain' }
                 });
             });
         })

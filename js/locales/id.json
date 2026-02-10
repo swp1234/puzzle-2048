@@ -14,5 +14,8 @@
     "currentScore": "Skor Saat Ini",
     "continue": "Lanjutkan Bermain",
     "playAgain": "Bermain Lagi"
+  },
+  "recommendations": {
+    "title": "Game Lainnya"
   }
 }

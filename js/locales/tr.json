@@ -14,5 +14,8 @@
     "currentScore": "Mevcut Puan",
     "continue": "Oyunmaya Devam Et",
     "playAgain": "Tekrar Oyna"
+  },
+  "recommendations": {
+    "title": "Daha Fazla Oyun"
   }
 }

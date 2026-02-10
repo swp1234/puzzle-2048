@@ -14,5 +14,8 @@
     "currentScore": "Current Score",
     "continue": "Continue Playing",
     "playAgain": "Play Again"
+  },
+  "recommendations": {
+    "title": "More Games"
   }
 }

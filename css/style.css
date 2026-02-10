@@ -132,6 +132,39 @@ body {
 }
 
 /* ============================================
+   Sound Toggle
+   ============================================ */
+
+.sound-toggle {
+    position: fixed;
+    top: 12px;
+    right: 64px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: rgba(243, 156, 18, 0.1);
+    color: var(--accent);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.sound-toggle:hover {
+    background: rgba(243, 156, 18, 0.2);
+    transform: scale(1.05);
+}
+
+.sound-toggle:active {
+    transform: scale(0.95);
+}
+
+/* ============================================
    Language Selector
    ============================================ */
 
@@ -720,6 +753,7 @@ input[type="submit"], [role="button"] {
 @media print {
     .ad-container,
     .language-selector,
+    .sound-toggle,
     .controls {
         display: none;
     }

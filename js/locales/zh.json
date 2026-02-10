@@ -14,5 +14,8 @@
     "currentScore": "当前分数",
     "continue": "继续游戏",
     "playAgain": "再玩一次"
+  },
+  "recommendations": {
+    "title": "更多游戏"
   }
 }

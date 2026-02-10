@@ -14,5 +14,8 @@
     "currentScore": "Текущий счет",
     "continue": "Продолжить игру",
     "playAgain": "Играть снова"
+  },
+  "recommendations": {
+    "title": "Больше игр"
   }
 }

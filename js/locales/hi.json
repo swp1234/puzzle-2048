@@ -14,5 +14,8 @@
     "currentScore": "वर्तमान स्कोर",
     "continue": "खेलना जारी रखें",
     "playAgain": "फिर से खेलें"
+  },
+  "recommendations": {
+    "title": "और गेम खेलें"
   }
 }

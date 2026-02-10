@@ -14,5 +14,8 @@
     "currentScore": "현재 점수",
     "continue": "계속하기",
     "playAgain": "다시 하기"
+  },
+  "recommendations": {
+    "title": "이것도 해보세요"
   }
 }
