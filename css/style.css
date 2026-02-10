@@ -332,7 +332,6 @@ body {
     justify-content: center;
     font-weight: 700;
     border-radius: 8px;
-    font-size: 32px;
     transition: left 150ms ease-in-out, top 150ms ease-in-out;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -382,11 +381,11 @@ body {
 .tile[data-value="16"] { background: linear-gradient(135deg, var(--tile-16) 0%, #d68910 100%); color: #ffffff; }
 .tile[data-value="32"] { background: linear-gradient(135deg, var(--tile-32) 0%, #c0392b 100%); color: #ffffff; }
 .tile[data-value="64"] { background: linear-gradient(135deg, var(--tile-64) 0%, #b5270f 100%); color: #ffffff; }
-.tile[data-value="128"] { background: linear-gradient(135deg, var(--tile-128) 0%, #922b21 100%); color: #ffffff; font-size: 28px; }
-.tile[data-value="256"] { background: linear-gradient(135deg, var(--tile-256) 0%, #76448a 100%); color: #ffffff; font-size: 28px; }
-.tile[data-value="512"] { background: linear-gradient(135deg, var(--tile-512) 0%, #6c3483 100%); color: #ffffff; font-size: 28px; }
-.tile[data-value="1024"] { background: linear-gradient(135deg, var(--tile-1024) 0%, #4a235a 100%); color: #ffffff; font-size: 22px; }
-.tile[data-value="2048"] { background: linear-gradient(135deg, var(--tile-2048) 0%, #1a252f 100%); color: var(--accent); font-size: 22px; font-weight: 800; }
+.tile[data-value="128"] { background: linear-gradient(135deg, var(--tile-128) 0%, #922b21 100%); color: #ffffff; }
+.tile[data-value="256"] { background: linear-gradient(135deg, var(--tile-256) 0%, #76448a 100%); color: #ffffff; }
+.tile[data-value="512"] { background: linear-gradient(135deg, var(--tile-512) 0%, #6c3483 100%); color: #ffffff; }
+.tile[data-value="1024"] { background: linear-gradient(135deg, var(--tile-1024) 0%, #4a235a 100%); color: #ffffff; }
+.tile[data-value="2048"] { background: linear-gradient(135deg, var(--tile-2048) 0%, #1a252f 100%); color: var(--accent); font-weight: 800; }
 
 /* Super Tiles (> 2048) */
 .tile[data-value^="4096"],
@@ -396,7 +395,6 @@ body {
 .tile[data-value^="65536"] {
     background: linear-gradient(135deg, var(--tile-super) 0%, #0f1419 100%);
     color: var(--accent-light);
-    font-size: 22px;
 }
 
 /* ============================================
@@ -597,15 +595,7 @@ body {
         flex: 1;
     }
 
-    .tile {
-        font-size: 24px;
-    }
-
-    .tile[data-value^="1024"],
-    .tile[data-value^="2048"],
-    .tile[data-value^="4096"] {
-        font-size: 18px;
-    }
+    /* font-size is set dynamically via JS based on tile size */
 
     .btn {
         font-size: 12px;

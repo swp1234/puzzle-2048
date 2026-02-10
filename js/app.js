@@ -316,6 +316,14 @@ class Game2048 {
         el.textContent = value;
         el.style.width = metrics.cellSize + 'px';
         el.style.height = metrics.cellSize + 'px';
+
+        // Dynamic font size: scale with tile size
+        const digits = String(value).length;
+        let fontRatio = 0.45;
+        if (digits === 3) fontRatio = 0.35;
+        if (digits >= 4) fontRatio = 0.28;
+        el.style.fontSize = Math.max(14, Math.floor(metrics.cellSize * fontRatio)) + 'px';
+
         return el;
     }
 
