@@ -3,6 +3,21 @@
  * Smooth slide animations, merge tracking, swipe/keyboard controls
  */
 
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        themeToggle.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+}
+
 class Game2048 {
     constructor() {
         this.size = 4;
@@ -562,8 +577,18 @@ class Game2048 {
 let game;
 
 function startGame() {
-    game = new Game2048();
-    initSoundToggle();
+    try {
+        game = new Game2048();
+        initSoundToggle();
+    } catch(e) {
+        console.error('Init error:', e);
+    } finally {
+        const loader = document.getElementById('app-loader');
+        if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.remove(), 300);
+        }
+    }
 }
 
 if (document.readyState === 'loading') {

@@ -13,6 +13,7 @@
     <meta property="og:description" content="타일을 합쳐 2048을 만드는 중독성 있는 퍼즐 게임">
     <meta property="og:type" content="game">
     <meta property="og:url" content="https://dopabrain.com/puzzle-2048/">
+    <link rel="canonical" href="https://dopabrain.com/puzzle-2048/">
     <meta property="og:image" content="https://dopabrain.com/puzzle-2048/icon-512.svg">
 
     <!-- Schema.org -->
@@ -49,11 +50,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="app-loader" id="app-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
 
     <!-- Sound Toggle -->
     <button id="sound-toggle" class="sound-toggle" aria-label="Toggle sound" title="Toggle Sound">🔊</button>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
 
     <!-- Language Selector -->
     <div class="language-selector">
