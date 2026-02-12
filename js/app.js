@@ -501,16 +501,33 @@ class Game2048 {
     }
 
     handleKeyPress(e) {
+        // Global shortcuts (work even when game over)
+        switch(e.key.toLowerCase()) {
+            case 'r':
+                e.preventDefault();
+                this.newGame();
+                return;
+            case 'u':
+                if (!this.gameOver) {
+                    e.preventDefault();
+                    this.undo();
+                }
+                return;
+        }
+
         if (this.gameOver || this.moving) return;
 
         const map = {
             'ArrowUp': 'up', 'ArrowDown': 'down',
-            'ArrowLeft': 'left', 'ArrowRight': 'right'
+            'ArrowLeft': 'left', 'ArrowRight': 'right',
+            'w': 'up', 's': 'down',
+            'a': 'left', 'd': 'right'
         };
 
-        if (map[e.key]) {
+        const direction = map[e.key] || map[e.key.toLowerCase()];
+        if (direction) {
             e.preventDefault();
-            this.move(map[e.key]);
+            this.move(direction);
         }
     }
 
