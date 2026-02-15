@@ -231,6 +231,18 @@
     <script defer src="js/i18n.js"></script>
     <script defer src="js/app.js"></script>
     <div id="share-float" style="position:fixed;bottom:80px;right:16px;z-index:99"><button onclick="(async()=>{const u=location.href,t=document.title;if(typeof gtag==='function')gtag('event','share',{method:navigator.share?'native':'clipboard',app_name:'puzzle-2048'});if(navigator.share){try{await navigator.share({title:t,url:u})}catch(e){}}else{await navigator.clipboard.writeText(u);this.textContent='✅';setTimeout(()=>this.textContent='📤',1500)}})()" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(8px)">📤</button></div>
+
+    <!-- Related Articles & Portal Link -->
+    <nav style="max-width:480px;margin:24px auto 0;padding:0 16px" aria-label="Related articles">
+        <p style="font-size:13px;font-weight:600;margin-bottom:8px;opacity:0.6;text-align:center">📖 Related Articles</p>
+        <div style="display:flex;flex-direction:column;gap:6px">
+            <a href="/portal/blog/en/number-puzzle-2048-tips.html" style="display:block;padding:10px 14px;background:rgba(128,128,128,0.1);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;opacity:0.7">2048 Puzzle Tips: Strategy to Reach the Highest Score</a>
+            <a href="/portal/blog/ja/2048-puzzle-strategy-guide.html" style="display:block;padding:10px 14px;background:rgba(128,128,128,0.1);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;opacity:0.7">2048パズル攻略ガイド - 高スコアの秘訣</a>
+            <a href="/portal/blog/en/free-games.html" style="display:block;padding:10px 14px;background:rgba(128,128,128,0.1);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;opacity:0.7">Best Free Browser Games 2026</a>
+        </div>
+        <p style="text-align:center;margin-top:16px"><a href="https://dopabrain.com/portal/" style="opacity:0.5;font-size:13px;text-decoration:none;color:inherit">← DopaBrain Home</a></p>
+    </nav>
+
     <script src="/portal/js/cross-promo.js" defer></script>
     <script src="/portal/js/pwa-install.js" defer></script>
 </body>
