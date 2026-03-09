@@ -423,6 +423,20 @@ class Game2048 {
         document.getElementById('final-score').textContent = this.score;
         document.getElementById('final-best').textContent = this.bestScore;
         this.gameOverModal.classList.remove('hidden');
+
+        // Rewarded ad: watch ad for 2x score
+        if (typeof GameAds !== 'undefined') {
+            GameAds.injectRewardButton({
+                container: '#game-over-modal',
+                label: 'Watch Ad for 2x Score',
+                onReward: () => {
+                    this.score *= 2;
+                    document.getElementById('final-score').textContent = this.score;
+                    this.updateScore();
+                    this.trackEvent('rewardedAd', { type: '2x_score', score: this.score });
+                }
+            });
+        }
     }
 
     showVictoryModal() {
@@ -436,6 +450,7 @@ class Game2048 {
     }
 
     newGame() {
+        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-modal');
         this.gameOverModal.classList.add('hidden');
         this.victoryModal.classList.add('hidden');
         this.clearGameState();
