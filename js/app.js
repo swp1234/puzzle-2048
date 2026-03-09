@@ -225,7 +225,13 @@ class Game2048 {
                     this.gameOver = true;
                     this.clearGameState();
                     this.playSound('gameOver');
-                    this.showGameOverModal();
+                    if (typeof GameAds !== 'undefined') {
+                        GameAds.showInterstitial({ onComplete: () => {
+                            this.showGameOverModal();
+                        } });
+                    } else {
+                        this.showGameOverModal();
+                    }
                     this.trackEvent('gameOver', { score: this.score, best: this.bestScore });
                 } else {
                     this.saveGameState();
@@ -733,6 +739,8 @@ if (document.readyState === 'loading') {
 if (typeof DailyStreak !== 'undefined') {
     DailyStreak.init({ gameId: 'puzzle-2048', bestScoreKey: 'puzzle2048_bestScore', minTarget: 500, unit: 'pts' });
 }
+
+if (typeof GameAds !== 'undefined') GameAds.init();
 
 function initSoundToggle() {
     const btn = document.getElementById('sound-toggle');
