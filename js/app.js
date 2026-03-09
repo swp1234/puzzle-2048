@@ -403,6 +403,7 @@ class Game2048 {
     }
 
     showGameOverModal() {
+        if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
         document.getElementById('final-score').textContent = this.score;
         document.getElementById('final-best').textContent = this.bestScore;
         this.gameOverModal.classList.remove('hidden');
@@ -679,6 +680,10 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startGame);
 } else {
     startGame();
+}
+
+if (typeof DailyStreak !== 'undefined') {
+    DailyStreak.init({ gameId: 'puzzle-2048', bestScoreKey: 'puzzle2048_bestScore', minTarget: 500, unit: 'pts' });
 }
 
 function initSoundToggle() {
