@@ -169,12 +169,14 @@ class Game2048 {
                     tile.col = nextCell.col;
 
                     this.score += merged.value;
+                    if (typeof Haptic !== 'undefined') Haptic.light();
                     moved = true;
                     mergedThisMove = true;
                     if (merged.value > maxMergeValue) maxMergeValue = merged.value;
 
                     if (merged.value === 2048 && !this.won) {
                         this.won = true;
+                        if (typeof Haptic !== 'undefined') Haptic.success();
                     }
                 } else {
                     // MOVE to farthest available position
@@ -403,6 +405,7 @@ class Game2048 {
     }
 
     showGameOverModal() {
+        if (typeof Haptic !== 'undefined') Haptic.heavy();
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
         document.getElementById('final-score').textContent = this.score;
         document.getElementById('final-best').textContent = this.bestScore;
