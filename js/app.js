@@ -52,7 +52,7 @@ class Game2048 {
         this.init();
     }
 
-    init() {
+    init(freshGame = false) {
         this.grid = this.createEmptyGrid();
         this.score = 0;
         this.gameOver = false;
@@ -60,8 +60,12 @@ class Game2048 {
         this.keepPlaying = false;
         this.gridElement.innerHTML = '';
 
-        this.addRandomTile();
-        this.addRandomTile();
+        if (!freshGame && this.loadGameState()) {
+            // Restored from saved state
+        } else {
+            this.addRandomTile();
+            this.addRandomTile();
+        }
         this.render();
         this.updateScore();
         this.setupEventListeners();
@@ -219,9 +223,12 @@ class Game2048 {
                     this.trackEvent('victory', { score: this.score });
                 } else if (!this.movesAvailable()) {
                     this.gameOver = true;
+                    this.clearGameState();
                     this.playSound('gameOver');
                     this.showGameOverModal();
                     this.trackEvent('gameOver', { score: this.score, best: this.bestScore });
+                } else {
+                    this.saveGameState();
                 }
             }, 160);
 
@@ -425,7 +432,8 @@ class Game2048 {
     newGame() {
         this.gameOverModal.classList.add('hidden');
         this.victoryModal.classList.add('hidden');
-        this.init();
+        this.clearGameState();
+        this.init(true);
         this.trackEvent('newGame', { bestScore: this.bestScore });
     }
 
@@ -644,6 +652,43 @@ class Game2048 {
 
     saveBestScore(score) {
         localStorage.setItem('puzzle2048_bestScore', score.toString());
+    }
+
+    saveGameState() {
+        const state = {
+            grid: this.grid.map(row => row.map(tile => tile ? tile.value : 0)),
+            score: this.score,
+            gameOver: this.gameOver
+        };
+        localStorage.setItem('puzzle2048_gameState', JSON.stringify(state));
+    }
+
+    loadGameState() {
+        try {
+            const raw = localStorage.getItem('puzzle2048_gameState');
+            if (!raw) return false;
+
+            const state = JSON.parse(raw);
+            if (!state.grid || state.grid.length !== this.size) return false;
+
+            for (let r = 0; r < this.size; r++) {
+                for (let c = 0; c < this.size; c++) {
+                    const val = state.grid[r][c];
+                    if (val > 0) {
+                        this.grid[r][c] = this.createTile(val, r, c);
+                    }
+                }
+            }
+            this.score = state.score || 0;
+            this.gameOver = state.gameOver || false;
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    clearGameState() {
+        localStorage.removeItem('puzzle2048_gameState');
     }
 
     // ========== ANALYTICS ==========
