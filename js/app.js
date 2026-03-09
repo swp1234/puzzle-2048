@@ -29,6 +29,10 @@ class Game2048 {
         this.moving = false;
         this.history = null;
 
+        // Combo system
+        this.combo = 0;
+        this.comboTimer = null;
+
         // DOM elements
         this.gridElement = document.getElementById('game-grid');
         this.gridBg = document.querySelector('.grid-background');
@@ -140,6 +144,8 @@ class Game2048 {
         const vector = this.getVector(direction);
         const traversals = this.buildTraversals(vector);
         let moved = false;
+        let mergedThisMove = false;
+        let maxMergeValue = 0;
 
         traversals.rows.forEach(row => {
             traversals.cols.forEach(col => {
@@ -164,6 +170,8 @@ class Game2048 {
 
                     this.score += merged.value;
                     moved = true;
+                    mergedThisMove = true;
+                    if (merged.value > maxMergeValue) maxMergeValue = merged.value;
 
                     if (merged.value === 2048 && !this.won) {
                         this.won = true;
@@ -183,7 +191,18 @@ class Game2048 {
         });
 
         if (moved) {
-            this.playSound('slide');
+            // Combo tracking
+            if (mergedThisMove) {
+                this.combo++;
+                this.playSound(maxMergeValue >= 128 ? 'merge' : 'slide');
+                if (maxMergeValue >= 256) this.triggerShake(maxMergeValue >= 1024 ? 6 : 3);
+                this.showCombo();
+            } else {
+                this.combo = 0;
+                this.playSound('slide');
+                this.hideCombo();
+            }
+
             this.addRandomTile();
 
             this.moving = true;
@@ -562,6 +581,54 @@ class Game2048 {
             osc.stop(ctx.currentTime + s.dur);
         } catch (e) {
             // Audio not supported
+        }
+    }
+
+    // ========== EFFECTS ==========
+
+    triggerShake(intensity = 3) {
+        const grid = this.gridBg;
+        if (!grid) return;
+        let frame = 0;
+        const maxFrames = 8;
+        const shake = () => {
+            if (frame >= maxFrames) {
+                grid.style.transform = '';
+                return;
+            }
+            const x = (Math.random() - 0.5) * intensity;
+            const y = (Math.random() - 0.5) * intensity;
+            grid.style.transform = `translate(${x}px, ${y}px)`;
+            frame++;
+            requestAnimationFrame(shake);
+        };
+        shake();
+    }
+
+    showCombo() {
+        if (this.combo < 2) return;
+        let el = document.getElementById('combo-display');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'combo-display';
+            el.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:48px;font-weight:800;color:var(--accent,#f39c12);text-shadow:0 0 20px rgba(243,156,18,0.5);pointer-events:none;z-index:100;transition:transform 0.2s cubic-bezier(0.4,0,0.2,1),opacity 0.3s;opacity:0;';
+            document.body.appendChild(el);
+        }
+        el.textContent = `${this.combo}x COMBO`;
+        el.style.transform = 'translate(-50%,-50%) scale(1)';
+        el.style.opacity = '1';
+        clearTimeout(this.comboTimer);
+        this.comboTimer = setTimeout(() => {
+            el.style.transform = 'translate(-50%,-50%) scale(0.8)';
+            el.style.opacity = '0';
+        }, 800);
+    }
+
+    hideCombo() {
+        const el = document.getElementById('combo-display');
+        if (el) {
+            el.style.transform = 'translate(-50%,-50%) scale(0)';
+            el.style.opacity = '0';
         }
     }
 
