@@ -449,6 +449,20 @@ class Game2048 {
         this.keepPlaying = true;
     }
 
+    shareScore() {
+        const text = `I scored ${this.score} in 2048! Can you beat me? 🧩`;
+        const url = 'https://dopabrain.com/puzzle-2048/';
+        if (navigator.share) {
+            navigator.share({ title: '2048 Puzzle', text, url }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                const btn = document.getElementById('share-score-btn');
+                if (btn) { const orig = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = orig, 1500); }
+            }).catch(() => {});
+        }
+        this.trackEvent('share', { score: this.score });
+    }
+
     newGame() {
         if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-modal');
         this.gameOverModal.classList.add('hidden');
@@ -514,6 +528,8 @@ class Game2048 {
         this.undoBtn.addEventListener('click', () => this.undo());
         this.undoAdBtn.addEventListener('click', () => this.undoWithAd());
         this.restartBtn.addEventListener('click', () => this.newGame());
+        const shareBtn = document.getElementById('share-score-btn');
+        if (shareBtn) shareBtn.addEventListener('click', () => this.shareScore());
         this.continueBtn.addEventListener('click', () => this.closeVictoryModal());
         this.restartFromVictoryBtn.addEventListener('click', () => this.newGame());
 
