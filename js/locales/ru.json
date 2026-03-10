@@ -13,7 +13,8 @@
     "reached2048": "Вы достигли 2048!",
     "currentScore": "Текущий счет",
     "continue": "Продолжить игру",
-    "playAgain": "Играть снова"
+    "playAgain": "Играть снова",
+    "shareScore": "Поделиться"
   },
   "recommendations": {
     "title": "Больше игр"

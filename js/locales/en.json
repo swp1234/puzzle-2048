@@ -13,7 +13,8 @@
     "reached2048": "You've reached 2048!",
     "currentScore": "Current Score",
     "continue": "Continue Playing",
-    "playAgain": "Play Again"
+    "playAgain": "Play Again",
+    "shareScore": "Share Score"
   },
   "recommendations": {
     "title": "More Games"

@@ -13,7 +13,8 @@
     "reached2048": "Du hast 2048 erreicht!",
     "currentScore": "Aktuelle Punktzahl",
     "continue": "Weiterspielen",
-    "playAgain": "Nochmal spielen"
+    "playAgain": "Nochmal spielen",
+    "shareScore": "Teilen"
   },
   "recommendations": {
     "title": "Mehr Spiele"

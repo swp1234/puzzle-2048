@@ -13,7 +13,8 @@
     "reached2048": "2048に到達しました!",
     "currentScore": "現在のスコア",
     "continue": "プレイを続ける",
-    "playAgain": "もう一度プレイ"
+    "playAgain": "もう一度プレイ",
+    "shareScore": "スコア共有"
   },
   "recommendations": {
     "title": "他のゲームも遊ぼう"

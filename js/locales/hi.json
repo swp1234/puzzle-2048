@@ -13,7 +13,8 @@
     "reached2048": "आप 2048 तक पहुंच गए!",
     "currentScore": "वर्तमान स्कोर",
     "continue": "खेलना जारी रखें",
-    "playAgain": "फिर से खेलें"
+    "playAgain": "फिर से खेलें",
+    "shareScore": "स्कोर शेयर"
   },
   "recommendations": {
     "title": "और गेम खेलें"

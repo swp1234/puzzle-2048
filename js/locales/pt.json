@@ -13,7 +13,8 @@
     "reached2048": "Você atingiu 2048!",
     "currentScore": "Pontuação Atual",
     "continue": "Continuar Jogando",
-    "playAgain": "Jogar Novamente"
+    "playAgain": "Jogar Novamente",
+    "shareScore": "Compartilhar"
   },
   "recommendations": {
     "title": "Mais Jogos"

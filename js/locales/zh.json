@@ -13,7 +13,8 @@
     "reached2048": "你已达到2048!",
     "currentScore": "当前分数",
     "continue": "继续游戏",
-    "playAgain": "再玩一次"
+    "playAgain": "再玩一次",
+    "shareScore": "分享分数"
   },
   "recommendations": {
     "title": "更多游戏"

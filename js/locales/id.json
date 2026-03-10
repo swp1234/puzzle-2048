@@ -13,7 +13,8 @@
     "reached2048": "Anda telah mencapai 2048!",
     "currentScore": "Skor Saat Ini",
     "continue": "Lanjutkan Bermain",
-    "playAgain": "Bermain Lagi"
+    "playAgain": "Bermain Lagi",
+    "shareScore": "Bagikan Skor"
   },
   "recommendations": {
     "title": "Game Lainnya"
