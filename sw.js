@@ -3,11 +3,12 @@
  * Enables offline functionality and caching
  */
 
-const CACHE_NAME = 'puzzle2048-v2';
+const CACHE_NAME = 'puzzle2048-v3';
 const ASSETS_TO_CACHE = [
     './',
     'index.html',
     'css/style.css',
+    'assets/bg-opt.jpg',
     'js/app.js',
     'js/i18n.js',
     'manifest.json',
