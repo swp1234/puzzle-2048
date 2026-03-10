@@ -286,6 +286,15 @@ class Game2048 {
         return this.getAvailableCells().length > 0 || this.tileMatchesAvailable();
     }
 
+    // Helper: Get the highest tile value on the grid
+    getMaxTile() {
+        let max = 0;
+        this.eachCell((r, c, tile) => {
+            if (tile && tile.value > max) max = tile.value;
+        });
+        return max;
+    }
+
     tileMatchesAvailable() {
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
@@ -427,6 +436,17 @@ class Game2048 {
         document.getElementById('final-best').textContent = this.bestScore;
         this.gameOverModal.classList.remove('hidden');
 
+        // Report achievements
+        if (typeof GameAchievements !== 'undefined') {
+            const totalGames = parseInt(localStorage.getItem('puzzle2048_totalGames') || '0') + 1;
+            localStorage.setItem('puzzle2048_totalGames', totalGames.toString());
+            GameAchievements.report({
+                bestScore: this.bestScore,
+                maxTile: this.getMaxTile(),
+                totalGames: totalGames
+            });
+        }
+
         // Rewarded ad: watch ad for 2x score
         if (typeof GameAds !== 'undefined') {
             GameAds.injectRewardButton({
@@ -446,6 +466,17 @@ class Game2048 {
         document.getElementById('victory-score').textContent = this.score;
         this.victoryModal.classList.remove('hidden');
         this.spawnConfetti(40);
+
+        // Report achievements
+        if (typeof GameAchievements !== 'undefined') {
+            const totalGames = parseInt(localStorage.getItem('puzzle2048_totalGames') || '0') + 1;
+            localStorage.setItem('puzzle2048_totalGames', totalGames.toString());
+            GameAchievements.report({
+                bestScore: this.bestScore,
+                maxTile: this.getMaxTile(),
+                totalGames: totalGames
+            });
+        }
     }
 
     spawnConfetti(count = 30) {
@@ -825,6 +856,18 @@ if (typeof DailyStreak !== 'undefined') {
 }
 
 if (typeof GameAds !== 'undefined') GameAds.init();
+
+if (typeof GameAchievements !== 'undefined') GameAchievements.init({
+    gameId: 'puzzle-2048',
+    defs: [
+        { id: 'score_1000', stat: 'bestScore', target: 1000, icon: '⭐', name: 'Getting Started' },
+        { id: 'score_5000', stat: 'bestScore', target: 5000, icon: '🏆', name: '2048 Pro' },
+        { id: 'score_20000', stat: 'bestScore', target: 20000, icon: '👑', name: '2048 Legend' },
+        { id: 'tile_2048', stat: 'maxTile', target: 2048, icon: '🎯', name: 'The 2048!' },
+        { id: 'tile_4096', stat: 'maxTile', target: 4096, icon: '💎', name: 'Beyond 2048' },
+        { id: 'games_10', stat: 'totalGames', target: 10, icon: '🎮', name: 'Regular Player' }
+    ]
+});
 
 function initSoundToggle() {
     const btn = document.getElementById('sound-toggle');
