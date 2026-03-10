@@ -445,6 +445,23 @@ class Game2048 {
     showVictoryModal() {
         document.getElementById('victory-score').textContent = this.score;
         this.victoryModal.classList.remove('hidden');
+        this.spawnConfetti(40);
+    }
+
+    spawnConfetti(count = 30) {
+        const colors = ['#edc22e', '#f2b179', '#f67c5f', '#edcf72', '#edc850', '#edc53f'];
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.style.cssText = `position:fixed;width:8px;height:8px;border-radius:${Math.random()>.5?'50%':'0'};pointer-events:none;z-index:9999;background:${colors[i%colors.length]};left:${50+(Math.random()-.5)*60}%;top:40%;opacity:1;transition:all 1s ease-out;`;
+            document.body.appendChild(p);
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = -80 - Math.random() * 150;
+            requestAnimationFrame(() => {
+                p.style.transform = `translate(${tx}px, ${ty}px) rotate(${Math.random()*360}deg)`;
+                p.style.opacity = '0';
+            });
+            setTimeout(() => p.remove(), 1200);
+        }
     }
 
     closeVictoryModal() {
