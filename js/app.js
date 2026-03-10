@@ -173,6 +173,7 @@ class Game2048 {
                     tile.col = nextCell.col;
 
                     this.score += merged.value;
+                    this.showMergePopup(merged.value, nextCell.row, nextCell.col);
                     if (typeof Haptic !== 'undefined') Haptic.light();
                     moved = true;
                     mergedThisMove = true;
@@ -410,9 +411,11 @@ class Game2048 {
 
     updateScore() {
         this.scoreElement.textContent = this.score;
+        const wasBest = this.bestScore;
         if (this.score > this.bestScore) {
             this.bestScore = this.score;
             this.saveBestScore(this.bestScore);
+            if (wasBest > 0 && this.score > wasBest) this.showNewBest();
         }
         this.bestScoreElement.textContent = this.bestScore;
     }
@@ -679,6 +682,39 @@ class Game2048 {
             el.style.transform = 'translate(-50%,-50%) scale(0)';
             el.style.opacity = '0';
         }
+    }
+
+    showMergePopup(value, row, col) {
+        const grid = this.gridElement;
+        if (!grid) return;
+        const cellSize = grid.offsetWidth / this.size;
+        const popup = document.createElement('div');
+        popup.textContent = `+${value}`;
+        popup.style.cssText = `position:absolute;left:${col * cellSize + cellSize / 2}px;top:${row * cellSize}px;transform:translateX(-50%);font-size:${value >= 128 ? 20 : 16}px;font-weight:800;color:var(--accent,#f39c12);pointer-events:none;z-index:50;opacity:1;transition:all 0.6s ease-out;`;
+        grid.style.position = 'relative';
+        grid.appendChild(popup);
+        requestAnimationFrame(() => {
+            popup.style.top = `${row * cellSize - 30}px`;
+            popup.style.opacity = '0';
+        });
+        setTimeout(() => popup.remove(), 700);
+    }
+
+    showNewBest() {
+        let el = document.getElementById('new-best-flash');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'new-best-flash';
+            el.style.cssText = 'position:fixed;top:20%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:32px;font-weight:800;color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,0.6);pointer-events:none;z-index:200;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;opacity:0;white-space:nowrap;';
+            document.body.appendChild(el);
+        }
+        el.textContent = 'NEW BEST!';
+        el.style.transform = 'translate(-50%,-50%) scale(1.2)';
+        el.style.opacity = '1';
+        setTimeout(() => {
+            el.style.transform = 'translate(-50%,-50%) scale(0.8)';
+            el.style.opacity = '0';
+        }, 1200);
     }
 
     // ========== STORAGE ==========
