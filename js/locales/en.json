@@ -14,7 +14,9 @@
     "currentScore": "Current Score",
     "continue": "Continue Playing",
     "playAgain": "Play Again",
-    "shareScore": "Share Score"
+    "shareScore": "Share Score",
+    "moves": "Moves",
+    "maxTile": "Max Tile"
   },
   "recommendations": {
     "title": "More Games"

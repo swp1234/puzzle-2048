@@ -14,7 +14,9 @@
     "currentScore": "Mevcut Puan",
     "continue": "Oyunmaya Devam Et",
     "playAgain": "Tekrar Oyna",
-    "shareScore": "Puanı Paylaş"
+    "shareScore": "Puanı Paylaş",
+    "moves": "Hamle",
+    "maxTile": "En Yüksek Karo"
   },
   "recommendations": {
     "title": "Daha Fazla Oyun"

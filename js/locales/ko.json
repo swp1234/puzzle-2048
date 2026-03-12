@@ -14,7 +14,9 @@
     "currentScore": "현재 점수",
     "continue": "계속하기",
     "playAgain": "다시 하기",
-    "shareScore": "점수 공유"
+    "shareScore": "점수 공유",
+    "moves": "이동 횟수",
+    "maxTile": "최고 타일"
   },
   "recommendations": {
     "title": "이것도 해보세요"

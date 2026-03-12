@@ -14,7 +14,9 @@
     "currentScore": "वर्तमान स्कोर",
     "continue": "खेलना जारी रखें",
     "playAgain": "फिर से खेलें",
-    "shareScore": "स्कोर शेयर"
+    "shareScore": "स्कोर शेयर",
+    "moves": "चालें",
+    "maxTile": "अधिकतम टाइल"
   },
   "recommendations": {
     "title": "और गेम खेलें"

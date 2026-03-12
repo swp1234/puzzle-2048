@@ -14,7 +14,9 @@
     "currentScore": "Aktuelle Punktzahl",
     "continue": "Weiterspielen",
     "playAgain": "Nochmal spielen",
-    "shareScore": "Teilen"
+    "shareScore": "Teilen",
+    "moves": "Züge",
+    "maxTile": "Höchste Kachel"
   },
   "recommendations": {
     "title": "Mehr Spiele"

@@ -14,7 +14,9 @@
     "currentScore": "Skor Saat Ini",
     "continue": "Lanjutkan Bermain",
     "playAgain": "Bermain Lagi",
-    "shareScore": "Bagikan Skor"
+    "shareScore": "Bagikan Skor",
+    "moves": "Langkah",
+    "maxTile": "Ubin Tertinggi"
   },
   "recommendations": {
     "title": "Game Lainnya"

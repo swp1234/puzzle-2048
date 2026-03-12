@@ -14,7 +14,9 @@
     "currentScore": "現在のスコア",
     "continue": "プレイを続ける",
     "playAgain": "もう一度プレイ",
-    "shareScore": "スコア共有"
+    "shareScore": "スコア共有",
+    "moves": "手数",
+    "maxTile": "最高タイル"
   },
   "recommendations": {
     "title": "他のゲームも遊ぼう"

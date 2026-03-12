@@ -14,7 +14,9 @@
     "currentScore": "Текущий счет",
     "continue": "Продолжить игру",
     "playAgain": "Играть снова",
-    "shareScore": "Поделиться"
+    "shareScore": "Поделиться",
+    "moves": "Ходы",
+    "maxTile": "Макс. плитка"
   },
   "recommendations": {
     "title": "Больше игр"

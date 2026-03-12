@@ -14,7 +14,9 @@
     "currentScore": "Puntuación Actual",
     "continue": "Continuar Jugando",
     "playAgain": "Jugar de Nuevo",
-    "shareScore": "Compartir"
+    "shareScore": "Compartir",
+    "moves": "Movimientos",
+    "maxTile": "Ficha Máxima"
   },
   "recommendations": {
     "title": "Más Juegos"

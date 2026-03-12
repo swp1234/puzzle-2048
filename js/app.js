@@ -32,6 +32,7 @@ class Game2048 {
         // Combo system
         this.combo = 0;
         this.comboTimer = null;
+        this.moves = 0;
 
         // DOM elements
         this.gridElement = document.getElementById('game-grid');
@@ -55,10 +56,13 @@ class Game2048 {
     init(freshGame = false) {
         this.grid = this.createEmptyGrid();
         this.score = 0;
+        this.moves = 0;
         this.gameOver = false;
         this.won = false;
         this.keepPlaying = false;
         this.gridElement.innerHTML = '';
+        const mc = document.getElementById('move-counter');
+        if (mc) mc.textContent = 'Moves: 0';
 
         if (!freshGame && this.loadGameState()) {
             // Restored from saved state
@@ -174,6 +178,7 @@ class Game2048 {
 
                     this.score += merged.value;
                     this.showMergePopup(merged.value, nextCell.row, nextCell.col);
+                    this.spawnMergeParticles(nextCell.row, nextCell.col, merged.value);
                     if (typeof Haptic !== 'undefined') Haptic.light();
                     moved = true;
                     mergedThisMove = true;
@@ -198,6 +203,9 @@ class Game2048 {
         });
 
         if (moved) {
+            this.moves++;
+            this.updateMoveCounter();
+
             // Combo tracking
             if (mergedThisMove) {
                 this.combo++;
@@ -434,6 +442,10 @@ class Game2048 {
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
         document.getElementById('final-score').textContent = this.score;
         document.getElementById('final-best').textContent = this.bestScore;
+        const movesEl = document.getElementById('final-moves');
+        if (movesEl) movesEl.textContent = this.moves;
+        const maxTileEl = document.getElementById('final-max-tile');
+        if (maxTileEl) maxTileEl.textContent = this.getMaxTile();
         this.gameOverModal.classList.remove('hidden');
 
         // Report achievements
@@ -746,6 +758,46 @@ class Game2048 {
             popup.style.opacity = '0';
         });
         setTimeout(() => popup.remove(), 700);
+    }
+
+    spawnMergeParticles(row, col, value) {
+        const grid = this.gridElement;
+        if (!grid) return;
+        const cellSize = grid.offsetWidth / this.size;
+        const cx = col * cellSize + cellSize / 2;
+        const cy = row * cellSize + cellSize / 2;
+        const count = value >= 128 ? 10 : 6;
+        const colors = ['#fbbf24', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#10b981'];
+
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'merge-particle';
+            const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+            const dist = 20 + Math.random() * 25;
+            const color = colors[i % colors.length];
+            const size = 4 + Math.random() * 4;
+            p.style.cssText = `left:${cx}px;top:${cy}px;width:${size}px;height:${size}px;background:${color};box-shadow:0 0 6px ${color};`;
+            grid.style.position = 'relative';
+            grid.appendChild(p);
+            requestAnimationFrame(() => {
+                p.style.left = (cx + Math.cos(angle) * dist) + 'px';
+                p.style.top = (cy + Math.sin(angle) * dist) + 'px';
+                p.classList.add('fade');
+            });
+            setTimeout(() => p.remove(), 550);
+        }
+    }
+
+    updateMoveCounter() {
+        let el = document.getElementById('move-counter');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'move-counter';
+            el.className = 'move-counter';
+            const container = document.querySelector('.game-container');
+            if (container) container.insertBefore(el, container.firstChild);
+        }
+        el.textContent = `Moves: ${this.moves}`;
     }
 
     showNewBest() {

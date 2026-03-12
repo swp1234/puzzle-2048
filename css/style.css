@@ -444,6 +444,30 @@ body {
 .tile[data-value="1024"] { background: linear-gradient(135deg, var(--tile-1024) 0%, #4a235a 100%); color: #ffffff; }
 .tile[data-value="2048"] { background: linear-gradient(135deg, var(--tile-2048) 0%, #1a252f 100%); color: var(--accent); font-weight: 800; }
 
+/* High-value tile glow */
+.tile[data-value="128"],
+.tile[data-value="256"] {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 15px rgba(192,57,43,0.4);
+}
+.tile[data-value="512"],
+.tile[data-value="1024"] {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 20px rgba(142,68,173,0.5);
+    animation: tileGlow 2s ease-in-out infinite alternate;
+}
+.tile[data-value="2048"] {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 25px rgba(243,156,18,0.6), 0 0 50px rgba(243,156,18,0.3);
+    animation: tileGlow2048 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes tileGlow {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.15); }
+}
+@keyframes tileGlow2048 {
+    from { filter: brightness(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 25px rgba(243,156,18,0.6); }
+    to { filter: brightness(1.25); box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 35px rgba(243,156,18,0.8), 0 0 60px rgba(243,156,18,0.4); }
+}
+
 /* Super Tiles (> 2048) */
 .tile[data-value^="4096"],
 .tile[data-value^="8192"],
@@ -452,6 +476,33 @@ body {
 .tile[data-value^="65536"] {
     background: linear-gradient(135deg, var(--tile-super) 0%, #0f1419 100%);
     color: var(--accent-light);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 30px rgba(243,156,18,0.5);
+    animation: tileGlow2048 1.5s ease-in-out infinite alternate;
+}
+
+/* Merge particle */
+.merge-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 30;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+}
+.merge-particle.fade {
+    opacity: 0;
+    transform: scale(0.3);
+}
+
+/* Move counter */
+.move-counter {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ============================================
