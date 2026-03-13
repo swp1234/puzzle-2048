@@ -34,6 +34,11 @@ class Game2048 {
         this.comboTimer = null;
         this.moves = 0;
 
+        // Milestone tracking (celebrate first 512, 1024, 2048, 4096, 8192)
+        this.milestonesReached = new Set(
+            JSON.parse(localStorage.getItem('puzzle2048_milestones') || '[]')
+        );
+
         // DOM elements
         this.gridElement = document.getElementById('game-grid');
         this.gridBg = document.querySelector('.grid-background');
@@ -187,6 +192,15 @@ class Game2048 {
                     if (merged.value === 2048 && !this.won) {
                         this.won = true;
                         if (typeof Haptic !== 'undefined') Haptic.success();
+                    }
+
+                    // Milestone celebration for first-time high tiles
+                    if ([512, 1024, 2048, 4096, 8192].includes(merged.value) &&
+                        !this.milestonesReached.has(merged.value)) {
+                        this.milestonesReached.add(merged.value);
+                        localStorage.setItem('puzzle2048_milestones',
+                            JSON.stringify([...this.milestonesReached]));
+                        this.showMilestone(merged.value);
                     }
                 } else {
                     // MOVE to farthest available position
@@ -758,6 +772,28 @@ class Game2048 {
             popup.style.opacity = '0';
         });
         setTimeout(() => popup.remove(), 700);
+    }
+
+    showMilestone(value) {
+        // Full-screen milestone banner
+        const banner = document.createElement('div');
+        const emoji = value >= 4096 ? '👑' : value >= 2048 ? '🏆' : value >= 1024 ? '💎' : '⭐';
+        banner.textContent = `${emoji} ${value}! ${emoji}`;
+        banner.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.3);font-size:48px;font-weight:900;color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,0.8),0 4px 12px rgba(0,0,0,0.6);z-index:9999;pointer-events:none;opacity:0;transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);';
+        document.body.appendChild(banner);
+        requestAnimationFrame(() => {
+            banner.style.opacity = '1';
+            banner.style.transform = 'translate(-50%,-50%) scale(1)';
+        });
+        setTimeout(() => {
+            banner.style.opacity = '0';
+            banner.style.transform = 'translate(-50%,-60%) scale(1.2)';
+        }, 1500);
+        setTimeout(() => banner.remove(), 2100);
+
+        // Big particle burst
+        this.triggerShake(8);
+        if (typeof Haptic !== 'undefined') Haptic.heavy();
     }
 
     spawnMergeParticles(row, col, value) {
