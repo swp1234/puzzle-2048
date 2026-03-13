@@ -16,7 +16,14 @@
     "playAgain": "Play Again",
     "shareScore": "Share Score",
     "moves": "Moves",
-    "maxTile": "Max Tile"
+    "maxTile": "Max Tile",
+    "moreGames": "More Games"
+  },
+  "related": {
+    "blockPuzzle": "Block Puzzle",
+    "numberPuzzle": "Number Puzzle",
+    "emojiMerge": "Emoji Merge",
+    "idleClicker": "Idle Clicker"
   },
   "recommendations": {
     "title": "More Games"

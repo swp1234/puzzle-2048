@@ -16,7 +16,14 @@
     "playAgain": "Играть снова",
     "shareScore": "Поделиться",
     "moves": "Ходы",
-    "maxTile": "Макс. плитка"
+    "maxTile": "Макс. плитка",
+    "moreGames": "Больше игр"
+  },
+  "related": {
+    "blockPuzzle": "Блок-пазл",
+    "numberPuzzle": "Числовой пазл",
+    "emojiMerge": "Эмодзи Мердж",
+    "idleClicker": "Кликер"
   },
   "recommendations": {
     "title": "Больше игр"

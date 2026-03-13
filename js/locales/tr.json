@@ -16,7 +16,14 @@
     "playAgain": "Tekrar Oyna",
     "shareScore": "Puanı Paylaş",
     "moves": "Hamle",
-    "maxTile": "En Yüksek Karo"
+    "maxTile": "En Yüksek Karo",
+    "moreGames": "Daha Fazla Oyun"
+  },
+  "related": {
+    "blockPuzzle": "Blok Bulmaca",
+    "numberPuzzle": "Sayı Bulmacası",
+    "emojiMerge": "Emoji Birleştirme",
+    "idleClicker": "Tıklama Oyunu"
   },
   "recommendations": {
     "title": "Daha Fazla Oyun"

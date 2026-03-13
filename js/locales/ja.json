@@ -16,7 +16,14 @@
     "playAgain": "もう一度プレイ",
     "shareScore": "スコア共有",
     "moves": "手数",
-    "maxTile": "最高タイル"
+    "maxTile": "最高タイル",
+    "moreGames": "おすすめゲーム"
+  },
+  "related": {
+    "blockPuzzle": "ブロックパズル",
+    "numberPuzzle": "ナンバーパズル",
+    "emojiMerge": "絵文字マージ",
+    "idleClicker": "アイドルクリッカー"
   },
   "recommendations": {
     "title": "他のゲームも遊ぼう"

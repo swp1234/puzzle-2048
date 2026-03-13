@@ -16,7 +16,14 @@
     "playAgain": "Nochmal spielen",
     "shareScore": "Teilen",
     "moves": "Züge",
-    "maxTile": "Höchste Kachel"
+    "maxTile": "Höchste Kachel",
+    "moreGames": "Mehr Spiele"
+  },
+  "related": {
+    "blockPuzzle": "Block-Puzzle",
+    "numberPuzzle": "Zahlen-Puzzle",
+    "emojiMerge": "Emoji Merge",
+    "idleClicker": "Idle Clicker"
   },
   "recommendations": {
     "title": "Mehr Spiele"

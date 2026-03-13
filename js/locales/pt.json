@@ -16,7 +16,14 @@
     "playAgain": "Jogar Novamente",
     "shareScore": "Compartilhar",
     "moves": "Movimentos",
-    "maxTile": "Peça Máxima"
+    "maxTile": "Peça Máxima",
+    "moreGames": "Mais Jogos"
+  },
+  "related": {
+    "blockPuzzle": "Puzzle de blocos",
+    "numberPuzzle": "Puzzle numérico",
+    "emojiMerge": "Emoji Merge",
+    "idleClicker": "Idle Clicker"
   },
   "recommendations": {
     "title": "Mais Jogos"

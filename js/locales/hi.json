@@ -16,7 +16,14 @@
     "playAgain": "फिर से खेलें",
     "shareScore": "स्कोर शेयर",
     "moves": "चालें",
-    "maxTile": "अधिकतम टाइल"
+    "maxTile": "अधिकतम टाइल",
+    "moreGames": "और गेम खेलें"
+  },
+  "related": {
+    "blockPuzzle": "ब्लॉक पज़ल",
+    "numberPuzzle": "नंबर पज़ल",
+    "emojiMerge": "इमोजी मर्ज",
+    "idleClicker": "आइडल क्लिकर"
   },
   "recommendations": {
     "title": "और गेम खेलें"

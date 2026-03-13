@@ -16,7 +16,14 @@
     "playAgain": "Bermain Lagi",
     "shareScore": "Bagikan Skor",
     "moves": "Langkah",
-    "maxTile": "Ubin Tertinggi"
+    "maxTile": "Ubin Tertinggi",
+    "moreGames": "Game Lainnya"
+  },
+  "related": {
+    "blockPuzzle": "Puzzle Blok",
+    "numberPuzzle": "Puzzle Angka",
+    "emojiMerge": "Emoji Merge",
+    "idleClicker": "Idle Clicker"
   },
   "recommendations": {
     "title": "Game Lainnya"

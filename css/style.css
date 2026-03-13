@@ -936,6 +936,61 @@ input[type="submit"], [role="button"] {
     }
 }
 
+/* Related Games Cross-Promo */
+.related-tests {
+    margin-top: 20px;
+    text-align: center;
+}
+.related-tests h3 {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.related-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.related-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all var(--transition-normal);
+    min-height: 44px;
+}
+.related-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--card-color, var(--accent));
+    transform: translateY(-1px);
+}
+.related-emoji {
+    font-size: 20px;
+    line-height: 1;
+}
+.related-name {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+[data-theme="light"] .related-card {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .related-card:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
 /* Keyboard shortcut hints */
 .keyboard-hints {
     display: none;

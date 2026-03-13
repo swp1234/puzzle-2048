@@ -16,7 +16,14 @@
     "playAgain": "다시 하기",
     "shareScore": "점수 공유",
     "moves": "이동 횟수",
-    "maxTile": "최고 타일"
+    "maxTile": "최고 타일",
+    "moreGames": "추천 게임"
+  },
+  "related": {
+    "blockPuzzle": "블록 퍼즐",
+    "numberPuzzle": "숫자 퍼즐",
+    "emojiMerge": "이모지 머지",
+    "idleClicker": "아이들 클리커"
   },
   "recommendations": {
     "title": "이것도 해보세요"
