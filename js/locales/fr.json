@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Jeu de Stratégie Numérique Gratuit en Ligne",
     "subtitle": "Combinez les tuiles pour atteindre 2048",
     "score": "Score",
     "best": "Meilleur",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Plus de Jeux"
+  },
+  "seo": {
+    "howToPlayTitle": "Comment jouer au 2048",
+    "howToPlayDesc": "Glissez ou utilisez les touches fléchées pour déplacer toutes les tuiles sur la grille 4x4. Lorsque deux tuiles portant le même nombre se touchent, elles fusionnent en une tuile de valeur double. Continuez à fusionner pour atteindre la tuile 2048 !",
+    "tipsTitle": "Conseils de stratégie 2048",
+    "tip1": "Gardez votre plus grande tuile dans un coin et ne la déplacez jamais.",
+    "tip2": "Construisez une chaîne de valeurs décroissantes le long d'un bord du plateau.",
+    "tip3": "Évitez de glisser vers le haut sauf si c'est absolument nécessaire pour garder le contrôle.",
+    "tip4": "Utilisez la fonction d'annulation de manière stratégique quand un mauvais coup brise votre chaîne."
   },
   "error": {
     "storage": "Certaines fonctions peuvent être limitées en mode privé.",

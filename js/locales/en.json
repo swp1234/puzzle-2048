@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Free Online Number Strategy Game",
     "subtitle": "Combine tiles to reach 2048",
     "score": "Score",
     "best": "Best",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "More Games"
+  },
+  "seo": {
+    "howToPlayTitle": "How to Play 2048",
+    "howToPlayDesc": "Swipe or use arrow keys to slide all tiles on the 4x4 grid. When two tiles with the same number touch, they merge into one tile with double the value. Keep merging to reach the 2048 tile and beyond!",
+    "tipsTitle": "2048 Strategy Tips",
+    "tip1": "Keep your highest tile in a corner and never move it away.",
+    "tip2": "Build a chain of descending values along one edge of the board.",
+    "tip3": "Avoid swiping up unless absolutely necessary to maintain board control.",
+    "tip4": "Use the undo feature strategically when a bad move breaks your chain."
   },
   "error": {
     "storage": "Some features may be limited in private mode. You can continue.",

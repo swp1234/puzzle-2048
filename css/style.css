@@ -288,13 +288,14 @@ body {
 }
 
 .header-left h1 {
-    font-size: 42px;
+    font-size: 22px;
     font-weight: 700;
     margin-bottom: 4px;
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    line-height: 1.2;
 }
 
 .subtitle {
@@ -688,7 +689,7 @@ body {
     }
 
     .header-left h1 {
-        font-size: 32px;
+        font-size: 18px;
     }
 
     .header-right {
@@ -726,7 +727,7 @@ body {
     }
 
     .header-left h1 {
-        font-size: 28px;
+        font-size: 16px;
     }
 
     .score-item {
@@ -1015,4 +1016,96 @@ input[type="submit"], [role="button"] {
     font-size: 10px;
     line-height: 1.4;
     color: var(--text-secondary);
+}
+
+/* ============================================
+   SEO Content Accordion
+   ============================================ */
+
+.seo-content {
+    max-width: 480px;
+    margin: 8px auto 0;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.seo-accordion {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(243, 156, 18, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.seo-accordion-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition-fast);
+}
+
+.seo-accordion-toggle:hover {
+    background: rgba(243, 156, 18, 0.06);
+}
+
+.seo-accordion-toggle h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--accent);
+}
+
+.accordion-icon {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+}
+
+.seo-accordion-body {
+    padding: 0 16px 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.seo-accordion-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.seo-accordion-body li {
+    padding-left: 16px;
+    position: relative;
+}
+
+.seo-accordion-body li::before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+[data-theme="light"] .seo-accordion {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(243, 156, 18, 0.15);
+}
+
+[data-theme="light"] .seo-accordion-toggle:hover {
+    background: rgba(243, 156, 18, 0.05);
 }

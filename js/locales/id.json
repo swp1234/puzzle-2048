@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Game Strategi Angka Online Gratis",
     "subtitle": "Gabungkan ubin untuk mencapai 2048",
     "score": "Skor",
     "best": "Terbaik",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Game Lainnya"
+  },
+  "seo": {
+    "howToPlayTitle": "Cara Bermain 2048",
+    "howToPlayDesc": "Geser atau gunakan tombol panah untuk menggeser semua ubin di grid 4x4. Ketika dua ubin dengan angka yang sama bersentuhan, mereka bergabung menjadi satu ubin dengan nilai ganda. Terus gabungkan untuk mencapai ubin 2048!",
+    "tipsTitle": "Tips Strategi 2048",
+    "tip1": "Pertahankan ubin terbesar Anda di sudut dan jangan pernah memindahkannya.",
+    "tip2": "Bangun rantai nilai menurun di sepanjang satu sisi papan.",
+    "tip3": "Hindari menggeser ke atas kecuali benar-benar diperlukan untuk menjaga kontrol papan.",
+    "tip4": "Gunakan fitur batalkan secara strategis saat langkah buruk merusak rantai Anda."
   },
   "error": {
     "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",

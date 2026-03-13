@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Juego de Estrategia Numérica Gratis Online",
     "subtitle": "Combina fichas para llegar a 2048",
     "score": "Puntuación",
     "best": "Mejor",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Más Juegos"
+  },
+  "seo": {
+    "howToPlayTitle": "Cómo jugar 2048",
+    "howToPlayDesc": "Desliza o usa las teclas de flecha para mover todas las fichas en la cuadrícula 4x4. Cuando dos fichas con el mismo número se tocan, se fusionan en una ficha con el doble del valor. ¡Sigue fusionando para alcanzar la ficha 2048!",
+    "tipsTitle": "Consejos de estrategia para 2048",
+    "tip1": "Mantén tu ficha más alta en una esquina y nunca la muevas.",
+    "tip2": "Construye una cadena de valores descendentes a lo largo de un borde del tablero.",
+    "tip3": "Evita deslizar hacia arriba a menos que sea absolutamente necesario para mantener el control.",
+    "tip4": "Usa la función de deshacer estratégicamente cuando un mal movimiento rompa tu cadena."
   },
   "error": {
     "storage": "Algunas funciones pueden estar limitadas en modo privado.",

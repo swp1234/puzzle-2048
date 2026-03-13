@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Kostenloses Online Zahlen-Strategiespiel",
     "subtitle": "Kombiniere Kacheln um 2048 zu erreichen",
     "score": "Punktzahl",
     "best": "Bestes Ergebnis",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Mehr Spiele"
+  },
+  "seo": {
+    "howToPlayTitle": "So spielst du 2048",
+    "howToPlayDesc": "Wische oder benutze die Pfeiltasten, um alle Kacheln auf dem 4x4-Raster zu verschieben. Wenn zwei Kacheln mit der gleichen Zahl sich berühren, verschmelzen sie zu einer Kachel mit dem doppelten Wert. Verschmelze weiter, um die 2048-Kachel zu erreichen!",
+    "tipsTitle": "2048 Strategietipps",
+    "tip1": "Halte deine größte Kachel in einer Ecke und bewege sie nie weg.",
+    "tip2": "Baue eine Kette absteigender Werte entlang einer Kante des Spielfelds.",
+    "tip3": "Vermeide es, nach oben zu wischen, es sei denn, es ist absolut notwendig für die Kontrolle.",
+    "tip4": "Nutze die Rückgängig-Funktion strategisch, wenn ein schlechter Zug deine Kette zerstört."
   },
   "error": {
     "storage": "Einige Funktionen sind im privaten Modus eingeschränkt.",

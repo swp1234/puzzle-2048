@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Puzzle - Jogo de Estratégia Numérica Grátis Online",
     "subtitle": "Combine peças para atingir 2048",
     "score": "Pontuação",
     "best": "Melhor",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Mais Jogos"
+  },
+  "seo": {
+    "howToPlayTitle": "Como jogar 2048",
+    "howToPlayDesc": "Deslize ou use as setas para mover todas as peças na grade 4x4. Quando duas peças com o mesmo número se tocam, elas se fundem em uma peça com o dobro do valor. Continue fundindo para alcançar a peça 2048!",
+    "tipsTitle": "Dicas de estratégia para 2048",
+    "tip1": "Mantenha sua peça mais alta em um canto e nunca a mova.",
+    "tip2": "Construa uma cadeia de valores decrescentes ao longo de uma borda do tabuleiro.",
+    "tip3": "Evite deslizar para cima a menos que seja absolutamente necessário para manter o controle.",
+    "tip4": "Use o recurso de desfazer estrategicamente quando um movimento ruim quebrar sua cadeia."
   },
   "error": {
     "storage": "Algumas funções podem ser limitadas no modo privado.",

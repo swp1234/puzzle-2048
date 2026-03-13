@@ -1,6 +1,7 @@
 {
   "game": {
     "title": "2048",
+    "h1": "2048 Bulmaca - Ücretsiz Çevrimiçi Sayı Strateji Oyunu",
     "subtitle": "2048'e ulaşmak için karoları birleştir",
     "score": "Puan",
     "best": "En İyi",
@@ -27,6 +28,15 @@
   },
   "recommendations": {
     "title": "Daha Fazla Oyun"
+  },
+  "seo": {
+    "howToPlayTitle": "2048 Nasıl Oynanır",
+    "howToPlayDesc": "4x4 ızgaradaki tüm karoları kaydırmak için parmağınızı kaydırın veya ok tuşlarını kullanın. Aynı sayıya sahip iki karo birbirine dokunduğunda, iki katı değerde tek bir karoya birleşirler. 2048 karosuna ulaşmak için birleştirmeye devam edin!",
+    "tipsTitle": "2048 Strateji İpuçları",
+    "tip1": "En büyük karonuzu bir köşede tutun ve asla hareket ettirmeyin.",
+    "tip2": "Tahtanın bir kenarı boyunca azalan değerler zinciri oluşturun.",
+    "tip3": "Tahta kontrolünü korumak için kesinlikle gerekli olmadıkça yukarı kaydırmaktan kaçının.",
+    "tip4": "Kötü bir hamle zincirinizi bozduğunda geri alma özelliğini stratejik olarak kullanın."
   },
   "error": {
     "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
