@@ -923,7 +923,9 @@ function startGame() {
         game = new Game2048();
         initSoundToggle();
     } catch(e) {
-        console.error('Init error:', e);
+        console.error('Game initialization failed:', e);
+        const loader = document.getElementById('app-loader');
+        if (loader) loader.classList.add('hidden');
     } finally {
         const loader = document.getElementById('app-loader');
         if (loader) {
@@ -934,9 +936,23 @@ function startGame() {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startGame);
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            startGame();
+        } catch (e) {
+            console.error('DOMContentLoaded initialization failed:', e);
+            const loader = document.getElementById('app-loader');
+            if (loader) loader.classList.add('hidden');
+        }
+    });
 } else {
-    startGame();
+    try {
+        startGame();
+    } catch (e) {
+        console.error('Immediate initialization failed:', e);
+        const loader = document.getElementById('app-loader');
+        if (loader) loader.classList.add('hidden');
+    }
 }
 
 if (typeof DailyStreak !== 'undefined') {
