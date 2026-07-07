@@ -8,6 +8,7 @@ class I18n {
         this.translations = {};
         this.supportedLanguages = ['ko', 'en', 'ja', 'zh', 'es', 'pt', 'id', 'tr', 'de', 'fr', 'hi', 'ru'];
         this.currentLang = this.detectLanguage();
+        document.documentElement.lang = this.currentLang;
         this.initialized = false;
     }
 
@@ -16,6 +17,16 @@ class I18n {
      * Priority: localStorage > browser > 'en'
      */
     detectLanguage() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get('lang');
+            if (urlLang && this.supportedLanguages.includes(urlLang)) {
+                return urlLang;
+            }
+        } catch (e) {
+            console.warn('Failed to detect URL language:', e.message);
+        }
+
         try {
             // Check localStorage first (with error handling for private mode)
             const saved = localStorage.getItem('language');
@@ -165,6 +176,7 @@ class I18n {
 
         try {
             this.currentLang = lang;
+            document.documentElement.lang = lang;
 
             // Try to save preference to localStorage
             try {
@@ -192,6 +204,8 @@ class I18n {
      */
     updateUI() {
         try {
+            document.documentElement.lang = this.currentLang;
+
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 try {
                     const key = element.getAttribute('data-i18n');
@@ -208,6 +222,10 @@ class I18n {
                 } catch (e) {
                     console.warn('Error updating element:', e.message);
                 }
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.toggle('active', option.getAttribute('data-lang') === this.currentLang);
             });
         } catch (e) {
             console.error('Error during updateUI:', e.message);
