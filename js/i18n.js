@@ -60,6 +60,11 @@ class I18n {
         }
 
         try {
+            const isFileProtocol = typeof window !== 'undefined' && window.location?.protocol === 'file:';
+            if (isFileProtocol) {
+                this.translations[lang] = {};
+                return this.translations[lang];
+            }
             const response = await fetch(`js/locales/${lang}.json`);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: Failed to load ${lang}.json`);
@@ -71,13 +76,17 @@ class I18n {
             this.translations[lang] = data;
             return this.translations[lang];
         } catch (error) {
-            console.error(`Error loading language ${lang}:`, error.message);
+            if (!isFileProtocol) {
+                console.warn(`Error loading language ${lang}:`, error.message);
+            }
             // Fallback to English if not already trying English
             if (lang !== 'en') {
                 try {
                     return await this.loadTranslations('en');
                 } catch (fallbackError) {
-                    console.error('Failed to load English fallback:', fallbackError.message);
+                    if (!isFileProtocol) {
+                        console.warn('Failed to load English fallback:', fallbackError.message);
+                    }
                     return {};
                 }
             }

@@ -33,6 +33,11 @@ class Game2048 {
         this.combo = 0;
         this.comboTimer = null;
         this.moves = 0;
+        this.entryParams = new URLSearchParams(window.location.search || '');
+        this.entrySurface = this.entryParams.get('surface') || this.entryParams.get('utm_content') || 'direct';
+        this.progressAdLoaded = false;
+        this.firstMoveTracked = false;
+        this.progressAdMoveThreshold = 4;
 
         // Milestone tracking (celebrate first 512, 1024, 2048, 4096, 8192)
         this.milestonesReached = new Set(
@@ -79,6 +84,9 @@ class Game2048 {
         this.updateScore();
         this.setupEventListeners();
         this.registerServiceWorker();
+        this.trackEvent('session_ready', {
+            restored: !freshGame && Boolean(localStorage.getItem('puzzle2048_gameState')) ? 'true' : 'false'
+        });
     }
 
     createEmptyGrid() {
@@ -219,6 +227,13 @@ class Game2048 {
         if (moved) {
             this.moves++;
             this.updateMoveCounter();
+            if (!this.firstMoveTracked) {
+                this.firstMoveTracked = true;
+                this.trackEvent('first_move', { direction });
+            }
+            if (this.moves === this.progressAdMoveThreshold) {
+                this.loadProgressAd();
+            }
 
             // Combo tracking
             if (mergedThisMove) {
@@ -595,6 +610,27 @@ class Game2048 {
         this.trackEvent('adView', { adType: 'interstitial' });
     }
 
+    loadProgressAd() {
+        if (this.progressAdLoaded) return;
+
+        const adContainer = document.getElementById('progress-ad');
+        const adNode = adContainer?.querySelector('.adsbygoogle');
+        if (!adContainer || !adNode) return;
+
+        adContainer.classList.remove('hidden');
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            this.progressAdLoaded = true;
+            adContainer.dataset.loaded = 'true';
+            this.trackEvent('progress_ad_impression', {
+                ad_slot: adNode.getAttribute('data-ad-slot') || 'auto',
+                move_count: this.moves
+            });
+        } catch (error) {
+            console.warn('2048 progress ad failed to load:', error);
+        }
+    }
+
     // ========== EVENT LISTENERS ==========
 
     setupEventListeners() {
@@ -904,12 +940,16 @@ class Game2048 {
 
     trackEvent(name, data = {}) {
         if (window.gtag) {
-            gtag('event', `puzzle2048_${name}`, data);
+            gtag('event', `puzzle2048_${name}`, {
+                event_category: 'puzzle_2048',
+                entry_surface: this.entrySurface || 'direct',
+                ...data
+            });
         }
     }
 
     registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
             navigator.serviceWorker.register('sw.js').catch(() => {});
         }
     }

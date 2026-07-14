@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play 2048 puzzle free online! Swipe to merge tiles in this addictive number strategy brain teaser. Undo moves, track scores, and challenge yourself to reach 2048.">
-    <meta name="dateModified" content="2026-07-07">
+    <meta name="dateModified" content="2026-07-15">
     <meta name="theme-color" content="#0f0f23">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -206,7 +206,9 @@
              data-ad-slot="auto"
              data-ad-format="horizontal"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             if (window.location.protocol !== 'file:') {
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             }
         </script>
     </div>
 
@@ -259,6 +261,15 @@
             <button class="btn btn-primary" id="new-game-btn" data-i18n="game.newGame">New Game</button>
             <button class="btn btn-secondary" id="undo-btn" data-i18n="game.undo">Undo</button>
             <button class="btn btn-secondary" id="undo-ad-btn" data-i18n="game.undoWithAd">Undo (Ad)</button>
+        </div>
+
+        <div class="ad-container ad-progress hidden" id="progress-ad" data-ad-surface="puzzle2048_progress_ad" data-loaded="false" aria-label="Sponsored">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3600813755953882"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
         </div>
 
         <div class="keyboard-hints" aria-label="Keyboard shortcuts" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight">
@@ -383,7 +394,9 @@
              data-ad-slot="auto"
              data-ad-format="horizontal"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             if (window.location.protocol !== 'file:') {
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             }
         </script>
     </div>
 
@@ -395,7 +408,9 @@
              data-ad-slot="auto"
              data-ad-format="vertical"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             if (window.location.protocol !== 'file:') {
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             }
         </script>
     </div>
 

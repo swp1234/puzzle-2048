@@ -137,6 +137,23 @@ body {
     border-top: 1px solid rgba(243, 156, 18, 0.1);
 }
 
+.ad-progress {
+    min-height: 96px;
+    margin: 0 0 16px;
+    border: 1px dashed rgba(243, 156, 18, 0.18);
+    border-radius: 10px;
+    background: rgba(26, 26, 46, 0.38);
+}
+
+.ad-progress.hidden {
+    display: none;
+}
+
+.ad-progress .adsbygoogle {
+    min-height: 80px;
+    width: 100%;
+}
+
 .ad-interstitial {
     position: fixed;
     top: 0;

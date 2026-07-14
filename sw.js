@@ -3,7 +3,7 @@
  * Enables offline functionality and caching
  */
 
-const CACHE_NAME = 'puzzle2048-v5';
+const CACHE_NAME = 'puzzle2048-v6';
 const ASSETS_TO_CACHE = [
     './',
     'index.html',
