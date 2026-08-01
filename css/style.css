@@ -1126,3 +1126,4 @@ input[type="submit"], [role="button"] {
 [data-theme="light"] .seo-accordion-toggle:hover {
     background: rgba(243, 156, 18, 0.05);
 }
+.board-coach-link{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;max-width:480px;margin:12px auto 0;padding:13px 15px;border:1px solid rgba(246,196,83,.38);border-radius:13px;background:linear-gradient(120deg,rgba(246,196,83,.1),rgba(139,124,246,.1));color:inherit;text-decoration:none}.board-coach-link>span:first-child{font-size:25px}.board-coach-link strong,.board-coach-link small{display:block}.board-coach-link small{margin-top:2px;opacity:.65;font-size:12px}.board-coach-link b{color:#f6c453;font-size:20px}.board-coach-link:hover{border-color:#f6c453;transform:translateY(-1px)}

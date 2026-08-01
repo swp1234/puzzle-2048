@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#17152d">
+  <title>2048 Board Analyzer: Find Your Best Next Move | DopaBrain</title>
+  <meta name="description" content="Enter any 2048 board and compare all legal moves. Preview the result, inspect empty cells, merges, corner control and get a transparent next-move recommendation.">
+  <meta name="dateModified" content="2026-08-01">
+  <link rel="canonical" href="https://dopabrain.com/puzzle-2048/coach.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2048 Board Analyzer & Next-Move Coach">
+  <meta property="og:description" content="Compare every legal 2048 move with a transparent, browser-local board analysis.">
+  <meta property="og:url" content="https://dopabrain.com/puzzle-2048/coach.html">
+  <meta property="og:image" content="https://dopabrain.com/portal/img/og/puzzle-2048.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" hreflang="en" href="https://dopabrain.com/puzzle-2048/coach.html?lang=en">
+  <link rel="alternate" hreflang="ko" href="https://dopabrain.com/puzzle-2048/coach.html?lang=ko">
+  <link rel="alternate" hreflang="zh" href="https://dopabrain.com/puzzle-2048/coach.html?lang=zh">
+  <link rel="alternate" hreflang="hi" href="https://dopabrain.com/puzzle-2048/coach.html?lang=hi">
+  <link rel="alternate" hreflang="ru" href="https://dopabrain.com/puzzle-2048/coach.html?lang=ru">
+  <link rel="alternate" hreflang="ja" href="https://dopabrain.com/puzzle-2048/coach.html?lang=ja">
+  <link rel="alternate" hreflang="es" href="https://dopabrain.com/puzzle-2048/coach.html?lang=es">
+  <link rel="alternate" hreflang="pt" href="https://dopabrain.com/puzzle-2048/coach.html?lang=pt">
+  <link rel="alternate" hreflang="id" href="https://dopabrain.com/puzzle-2048/coach.html?lang=id">
+  <link rel="alternate" hreflang="tr" href="https://dopabrain.com/puzzle-2048/coach.html?lang=tr">
+  <link rel="alternate" hreflang="de" href="https://dopabrain.com/puzzle-2048/coach.html?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://dopabrain.com/puzzle-2048/coach.html?lang=fr">
+  <link rel="alternate" hreflang="x-default" href="https://dopabrain.com/puzzle-2048/coach.html">
+  <link rel="stylesheet" href="css/coach.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-J8GSWM40TV',{'anonymize_ip':true,'allow_google_signals':false});</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"2048 Board Analyzer and Next-Move Coach","applicationCategory":"GameApplication","operatingSystem":"Any","url":"https://dopabrain.com/puzzle-2048/coach.html","dateModified":"2026-08-01","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A browser-local 2048 position analyzer that simulates legal moves and compares board health."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How does the 2048 board analyzer choose a move?","acceptedAnswer":{"@type":"Answer","text":"It applies the standard slide-and-merge rules to all four directions, discards moves that do not change the board, and compares immediate merge points, empty cells, merge opportunities, smoothness, monotonic order and whether the largest tile stays in a corner. It also evaluates one expected random-tile step ahead."}},
+    {"@type":"Question","name":"Does the recommendation guarantee the best 2048 move?","acceptedAnswer":{"@type":"Answer","text":"No. A new 2 or 4 tile appears randomly after each move, so no short analysis can guarantee the globally optimal play. The coach explains its heuristic and lets you inspect every legal preview."}},
+    {"@type":"Question","name":"Is my 2048 board uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Board calculation and optional last-board storage happen inside the current browser. Tile values are not sent with analytics."}}
+  ]}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#boardEditor" data-i18n="skip">Skip to board editor</a>
+  <header class="hero">
+    <nav>
+      <a href="./" id="playTop" data-preserve-lang><span aria-hidden="true">←</span> <span data-i18n="play">Play 2048</span></a>
+      <label><span data-i18n="language">Language</span>
+        <select id="language" aria-label="Language">
+          <option value="en">English</option><option value="ko">한국어</option><option value="zh">中文</option><option value="hi">हिन्दी</option>
+          <option value="ru">Русский</option><option value="ja">日本語</option><option value="es">Español</option><option value="pt">Português</option>
+          <option value="id">Indonesia</option><option value="tr">Türkçe</option><option value="de">Deutsch</option><option value="fr">Français</option>
+        </select>
+      </label>
+    </nav>
+    <p class="eyebrow" data-i18n="eyebrow">2048 POSITION LAB · NO SIGN-UP</p>
+    <h1 data-i18n="title">2048 Board Analyzer</h1>
+    <p class="lead" data-i18n="lead">Enter the tiles you see. The coach simulates every legal direction, previews the board before a random tile appears, and explains the strongest next move.</p>
+    <div class="hero-chips"><span data-i18n="chipRules">Exact merge rules</span><span data-i18n="chipMoves">Four-move comparison</span><span data-i18n="chipLocal">Runs locally</span><span data-i18n="chipLookahead">One-step lookahead</span></div>
+  </header>
+
+  <main>
+    <section class="notice">
+      <strong data-i18n="limitTitle">A coach, not an oracle</strong>
+      <p data-i18n="limitBody">The next tile appears randomly, so the result is a transparent heuristic—not a guaranteed perfect move. Your tile values stay in this browser and are never included in analytics.</p>
+    </section>
+
+    <section class="workbench" aria-label="2048 analysis workbench">
+      <article id="boardEditor" class="panel editor-panel">
+        <div class="section-head"><div><p class="kicker" data-i18n="step1">STEP 1 · ENTER BOARD</p><h2 data-i18n="boardTitle">Your current 4×4 board</h2></div><button id="clearBoard" class="ghost" type="button" data-i18n="clear">Clear</button></div>
+        <p class="fine" data-i18n="boardHelp">Use 0 for an empty cell. Valid tiles are powers of two from 2 to 131072.</p>
+        <div id="boardInputs" class="board input-board" role="grid" aria-label="Editable 2048 board"></div>
+        <div class="paste-row"><input id="pasteBoard" type="text" autocomplete="off" data-i18n-placeholder="pastePlaceholder" placeholder="Paste 16 values separated by spaces or commas"><button id="applyPaste" class="ghost" type="button" data-i18n="apply">Apply</button></div>
+        <div class="preset-wrap"><span data-i18n="presets">Try a position</span><div id="presets" class="presets"><button type="button" data-preset="opening" data-i18n="presetOpening">Open board</button><button type="button" data-preset="corner" data-i18n="presetCorner">Corner chain</button><button type="button" data-preset="trap" data-i18n="presetTrap">Merge trap</button><button type="button" data-preset="endgame" data-i18n="presetEndgame">Crowded board</button></div></div>
+        <p id="inputError" class="error" role="alert" hidden></p>
+        <button id="analyze" class="primary analyze" type="button" data-i18n="analyze">Analyze all four moves</button>
+      </article>
+
+      <article class="panel result-panel" aria-live="polite">
+        <div id="resultEmpty" class="result-empty"><span>🧭</span><h2 data-i18n="emptyTitle">Your next move starts here</h2><p data-i18n="emptyBody">Load a sample or enter your board, then compare every legal direction.</p></div>
+        <div id="resultContent" hidden>
+          <p class="kicker" data-i18n="step2">STEP 2 · COMPARE MOVES</p>
+          <div class="recommendation"><span id="bestArrow" aria-hidden="true">←</span><div><small data-i18n="recommendation">RECOMMENDED NEXT MOVE</small><h2 id="bestMove">Left</h2><p id="confidence"></p></div></div>
+          <div id="diagnostics" class="diagnostics"></div>
+          <h3 data-i18n="moveTableTitle">Move comparison</h3>
+          <div id="moveList" class="move-list"></div>
+          <div class="preview-head"><h3 data-i18n="previewTitle">Board after selected move</h3><span data-i18n="beforeRandom">Before the random tile</span></div>
+          <div id="previewBoard" class="board preview-board" aria-label="Move preview"></div>
+          <div class="why"><h3 data-i18n="whyTitle">Why this move?</h3><ul id="reasons"></ul></div>
+          <div class="result-actions"><button id="copyAnalysis" class="ghost" type="button" data-i18n="copy">Copy analysis</button><a id="playResult" class="primary link-button" href="./" data-preserve-lang data-i18n="playPosition">Play 2048 now</a></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="ad-wrap" data-ad-surface="coach_2048_inline"><span data-i18n="ad">Advertisement</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3600813755953882" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+
+    <section class="panel explain">
+      <p class="kicker" data-i18n="methodKicker">TRANSPARENT SCORING</p><h2 data-i18n="methodTitle">What the coach measures</h2>
+      <div class="factor-grid">
+        <article><span>□</span><h3 data-i18n="factorEmpty">Empty cells</h3><p data-i18n="factorEmptyBody">More space usually gives future tiles and merges room to move.</p></article>
+        <article><span>＋</span><h3 data-i18n="factorMerge">Merge value</h3><p data-i18n="factorMergeBody">Immediate points and remaining adjacent pairs reward useful consolidation.</p></article>
+        <article><span>⌟</span><h3 data-i18n="factorCorner">Corner control</h3><p data-i18n="factorCornerBody">Keeping the largest tile in a corner supports a stable edge chain.</p></article>
+        <article><span>↘</span><h3 data-i18n="factorOrder">Tile order</h3><p data-i18n="factorOrderBody">Smooth, monotonic rows and columns are easier to combine than scattered peaks.</p></article>
+      </div>
+      <p class="fine" data-i18n="methodNote">For lookahead, the coach tries a 2 or 4 in every empty cell using the usual 90%/10% weighting, then evaluates the best legal reply. It does not search the full game tree.</p>
+      <p class="fine">Movement rules follow the <a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="noopener">original open-source 2048 implementation ↗</a>. The evaluation heuristic is explained above and is independent of that project.</p>
+    </section>
+
+    <section class="next-links">
+      <a href="./" data-preserve-lang data-destination="play"><span>🎮</span><div><strong data-i18n="playCard">Play 2048</strong><small data-i18n="playCardBody">Test the idea on the live board</small></div></a>
+      <a id="guideLink" href="/portal/blog/en/number-puzzle-2048-tips.html" data-destination="guide"><span>📖</span><div><strong data-i18n="guideCard">2048 strategy guide</strong><small data-i18n="guideCardBody">Learn corner chains and board control</small></div></a>
+      <a href="/portal/games/" data-destination="games"><span>🕹️</span><div><strong data-i18n="gamesCard">More brain games</strong><small data-i18n="gamesCardBody">Browse puzzles and quick challenges</small></div></a>
+    </section>
+  </main>
+  <footer><a href="/portal/tools/" data-i18n="tools">← All tools</a><span data-i18n="footer">Independent helper for the open-source 2048 game concept.</span></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="js/coach.js" defer></script>
+  <script src="/portal/js/cross-promo.js" defer></script>
+</body>
+</html>

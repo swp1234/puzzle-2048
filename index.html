@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play 2048 puzzle free online! Swipe to merge tiles in this addictive number strategy brain teaser. Undo moves, track scores, and challenge yourself to reach 2048.">
-    <meta name="dateModified" content="2026-07-15">
+    <meta name="dateModified" content="2026-08-01">
     <meta name="theme-color" content="#0f0f23">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -263,6 +263,10 @@
             <button class="btn btn-secondary" id="undo-ad-btn" data-i18n="game.undoWithAd">Undo (Ad)</button>
         </div>
 
+        <a id="board-coach-link" class="board-coach-link" href="coach.html?source=game">
+            <span aria-hidden="true">🧭</span><span><strong>Analyze a board position</strong><small>Compare all four moves before you swipe</small></span><b aria-hidden="true">→</b>
+        </a>
+
         <div class="ad-container ad-progress hidden" id="progress-ad" data-ad-surface="puzzle2048_progress_ad" data-loaded="false" aria-label="Sponsored">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -480,6 +484,9 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
+</script>
+<script>
+(function(){var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('app_language')||'en',c={ko:['보드 포지션 분석','스와이프 전에 네 방향을 비교하세요'],zh:['分析当前棋盘','滑动前比较四个方向'],ja:['盤面を分析','スワイプ前に4方向を比較'],es:['Analizar una posición','Compara los cuatro movimientos'],pt:['Analisar uma posição','Compare as quatro jogadas'],id:['Analisis posisi papan','Bandingkan empat langkah'],tr:['Tahta konumunu analiz et','Dört hamleyi karşılaştır'],de:['Brettposition analysieren','Vergleiche alle vier Züge'],fr:['Analyser une position','Comparez les quatre coups'],hi:['बोर्ड स्थिति का विश्लेषण','चारों चालों की तुलना करें'],ru:['Анализ позиции','Сравните четыре хода']},a=document.getElementById('board-coach-link');if(!a)return;var t=c[l]||['Analyze a board position','Compare all four moves before you swipe'];a.querySelector('strong').textContent=t[0];a.querySelector('small').textContent=t[1];var u=new URL(a.href,location.href);u.searchParams.set('lang',l);a.href=u.pathname+u.search;a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','coach_2048_game_click',{event_category:'engagement',source_app:'puzzle_2048',surface_name:'game_controls',content_locale:l,revenue_goal:'daily_0_10'})})}());
 </script>
 </body>
 </html>
