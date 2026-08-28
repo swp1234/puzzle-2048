@@ -35,9 +35,7 @@ class Game2048 {
         this.moves = 0;
         this.entryParams = new URLSearchParams(window.location.search || '');
         this.entrySurface = this.entryParams.get('surface') || this.entryParams.get('utm_content') || 'direct';
-        this.progressAdLoaded = false;
         this.firstMoveTracked = false;
-        this.progressAdMoveThreshold = 4;
 
         // Milestone tracking (celebrate first 512, 1024, 2048, 4096, 8192)
         this.milestonesReached = new Set(
@@ -55,7 +53,6 @@ class Game2048 {
         // Buttons
         this.newGameBtn = document.getElementById('new-game-btn');
         this.undoBtn = document.getElementById('undo-btn');
-        this.undoAdBtn = document.getElementById('undo-ad-btn');
         this.restartBtn = document.getElementById('restart-btn');
         this.continueBtn = document.getElementById('continue-btn');
         this.restartFromVictoryBtn = document.getElementById('restart-from-victory-btn');
@@ -231,10 +228,6 @@ class Game2048 {
                 this.firstMoveTracked = true;
                 this.trackEvent('first_move', { direction });
             }
-            if (this.moves === this.progressAdMoveThreshold) {
-                this.loadProgressAd();
-            }
-
             // Combo tracking
             if (mergedThisMove) {
                 this.combo++;
@@ -433,7 +426,7 @@ class Game2048 {
         const cells = this.gridBg.querySelectorAll('.grid-cell');
         if (cells.length === 0) return null;
 
-        const gridRect = this.gridElement.getBoundingClientRect();
+        const gridRect = this.gridBg.getBoundingClientRect();
         const positions = [];
         let cellSize = 0;
 
@@ -598,39 +591,6 @@ class Game2048 {
         this.trackEvent('undo', { score: this.score });
     }
 
-    undoWithAd() {
-        this.showInterstitialAd();
-        setTimeout(() => this.undo(), 5000);
-    }
-
-    showInterstitialAd() {
-        const adContainer = document.getElementById('interstitial-ad');
-        adContainer.classList.remove('hidden');
-        setTimeout(() => adContainer.classList.add('hidden'), 5000);
-        this.trackEvent('adView', { adType: 'interstitial' });
-    }
-
-    loadProgressAd() {
-        if (this.progressAdLoaded) return;
-
-        const adContainer = document.getElementById('progress-ad');
-        const adNode = adContainer?.querySelector('.adsbygoogle');
-        if (!adContainer || !adNode) return;
-
-        adContainer.classList.remove('hidden');
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-            this.progressAdLoaded = true;
-            adContainer.dataset.loaded = 'true';
-            this.trackEvent('progress_ad_impression', {
-                ad_slot: adNode.getAttribute('data-ad-slot') || 'auto',
-                move_count: this.moves
-            });
-        } catch (error) {
-            console.warn('2048 progress ad failed to load:', error);
-        }
-    }
-
     // ========== EVENT LISTENERS ==========
 
     setupEventListeners() {
@@ -639,7 +599,6 @@ class Game2048 {
 
         this.newGameBtn.addEventListener('click', () => this.newGame());
         this.undoBtn.addEventListener('click', () => this.undo());
-        this.undoAdBtn.addEventListener('click', () => this.undoWithAd());
         this.restartBtn.addEventListener('click', () => this.newGame());
         const shareBtn = document.getElementById('share-score-btn');
         if (shareBtn) shareBtn.addEventListener('click', () => this.shareScore());

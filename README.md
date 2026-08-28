@@ -1,6 +1,6 @@
 # 2048 - Puzzle Game
 
-A modern, high-revenue 2048 puzzle game built with vanilla JavaScript, PWA support, and multi-language internationalization.
+A modern 2048 puzzle game built with vanilla JavaScript, PWA support, and multi-language internationalization.
 
 ## Features
 
@@ -16,9 +16,9 @@ A modern, high-revenue 2048 puzzle game built with vanilla JavaScript, PWA suppo
 - **Accessibility**: 44px+ touch targets, keyboard navigation
 
 ### Monetization
-- **AdSense Integration**: Top & bottom banner ads + interstitial ads
+- **AdSense Integration**: One Auto Ads site loader in the document head
 - **GA4 Analytics**: Event tracking for user behavior
-- **Undo Feature**: 1 free undo + ad-based undo for engagement
+- **Undo Feature**: One-step undo via the button or U key
 
 ### Technical Excellence
 - **PWA Ready**: Offline support, installable to home screen
@@ -31,7 +31,7 @@ A modern, high-revenue 2048 puzzle game built with vanilla JavaScript, PWA suppo
 
 ```
 puzzle-2048/
-├── index.html              # Main HTML with ad slots & modals
+├── index.html              # Main HTML with the Auto Ads loader and game modals
 ├── manifest.json           # PWA configuration
 ├── sw.js                   # Service Worker
 ├── icon-192.svg, icon-512.svg  # App icons
@@ -65,8 +65,7 @@ puzzle-2048/
 - Continue Playing: Option to exceed 2048 and set new records
 
 ### Undo Feature
-- **Free Undo**: One per game session
-- **Ad-based Undo**: Additional undo by watching ad
+- **One-step Undo**: Restore the board and score from the previous valid move
 
 ## Internationalization (i18n)
 
@@ -100,18 +99,16 @@ puzzle-2048/
 ## Monetization Strategy
 
 ### Ad Placements
-- **Top Banner**: Display ad (responsive, 300x250, 320x50)
-- **Bottom Banner**: Display ad (responsive)
-- **Interstitial**: Full-screen ad on game over (interstitial)
-- **Reward Ad**: Ad-based undo feature
+- **Auto Ads**: A single site loader; placement is managed by AdSense
+- **Game Over Interstitial**: Shared `GameAds.showInterstitial` natural-break flow
+- **Game Over Reward**: Shared `GameAds.injectRewardButton` flow for a 2x score reward
 
-### Revenue Optimization
-| Position | Type | Expected RPM |
-|----------|------|--------------|
-| Top | Banner | $1-3 |
-| Bottom | Banner | $1-3 |
-| Game Over | Interstitial | $5-15 |
-| Undo | Reward | Custom |
+### Revenue Surfaces
+| Surface | Implementation |
+|---------|----------------|
+| Page | Auto Ads site loader |
+| Game Over | Shared natural-break interstitial |
+| Game Over | Shared opt-in reward |
 
 ### Analytics
 - **GA4 Property**: G-J8GSWM40TV
@@ -121,7 +118,6 @@ puzzle-2048/
   - `puzzle2048_victory`: Reached 2048
   - `puzzle2048_gameOver`: Game ended
   - `puzzle2048_undo`: Undo used
-  - `puzzle2048_adView`: Ad displayed
 
 ## Design
 
@@ -210,7 +206,7 @@ http://localhost:8000
 - [ ] Game Over detection
 - [ ] Score persistence in localStorage
 - [ ] Language switching (12 languages)
-- [ ] Ad placements visible
+- [ ] Auto Ads loader present exactly once
 - [ ] Sound effects working
 - [ ] Service Worker offline mode
 - [ ] PWA installable
@@ -218,7 +214,7 @@ http://localhost:8000
 
 ### Deployment
 1. Ensure all translations are complete (12 languages)
-2. Test all ad placements
+2. Verify the Auto Ads loader and shared GameAds natural-break flows
 3. Verify GA4 event tracking
 4. Check PWA manifest and icons
 5. Run Lighthouse audit
@@ -237,6 +233,6 @@ Sang-woo (dev@dopabrain.com)
 
 ---
 
-**Game Tier**: Tier 1 (Casual Game - High Revenue Potential)
-**Expected Revenue**: 5-10x higher than utility apps due to long playtime & natural ad placement
+**Game Tier**: Tier 1 (Casual Game)
+**Revenue Model**: Auto Ads plus shared natural-break and opt-in reward flows
 **Update Schedule**: Monthly balance updates + seasonal events (future)

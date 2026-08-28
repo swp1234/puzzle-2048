@@ -100,56 +100,6 @@
     }
     </script>
 
-    <!-- Schema.org - FAQPage -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is the 2048 puzzle game and how do you play it?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "2048 is a single-player sliding tile puzzle game. Swipe or use arrow keys to move all tiles on a 4x4 grid. When two tiles with the same number collide, they merge into one tile with their sum. The goal is to create a tile with the number 2048."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What is the best strategy to win 2048?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The best strategy is to keep your highest-value tile in one corner and build a chain of descending values along one edge. Avoid moving your large tile away from the corner, and try to keep the board organized by primarily swiping in two directions."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I undo moves in this 2048 game?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes! This version of 2048 includes an undo feature. Press the Undo button or the U key to reverse your last move. You can also watch a short ad to earn additional undo uses."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is 2048 free to play online?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, 2048 on DopaBrain is completely free to play online. No download or registration required. Just open the page and start playing instantly on any device."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What is the highest possible tile in 2048?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Theoretically, the highest possible tile is 131072 (2^17) on a standard 4x4 grid. However, reaching even 8192 or 16384 requires exceptional skill and strategy. Most players aim for the 2048 tile as the primary goal."
-                }
-            }
-        ]
-    }
-    </script>
-
     <!-- Preconnect to external services for performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
@@ -196,20 +146,6 @@
             <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
             <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
         </div>
-    </div>
-
-    <!-- Top Ad -->
-    <div class="ad-container ad-top">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3600813755953882"
-             data-ad-slot="auto"
-             data-ad-format="horizontal"></ins>
-        <script>
-             if (window.location.protocol !== 'file:') {
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-             }
-        </script>
     </div>
 
     <!-- Main Game Container -->
@@ -260,21 +196,11 @@
         <div class="controls">
             <button class="btn btn-primary" id="new-game-btn" data-i18n="game.newGame">New Game</button>
             <button class="btn btn-secondary" id="undo-btn" data-i18n="game.undo">Undo</button>
-            <button class="btn btn-secondary" id="undo-ad-btn" data-i18n="game.undoWithAd">Undo (Ad)</button>
         </div>
 
         <a id="board-coach-link" class="board-coach-link" href="coach.html?source=game">
             <span aria-hidden="true">🧭</span><span><strong>Analyze a board position</strong><small>Compare all four moves before you swipe</small></span><b aria-hidden="true">→</b>
         </a>
-
-        <div class="ad-container ad-progress hidden" id="progress-ad" data-ad-surface="puzzle2048_progress_ad" data-loaded="false" aria-label="Sponsored">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-3600813755953882"
-                 data-ad-slot="auto"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-        </div>
 
         <div class="keyboard-hints" aria-label="Keyboard shortcuts" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight">
             <span class="kbd-hint"><kbd>Arrow</kbd>/<kbd>WASD</kbd> Slide</span>
@@ -389,34 +315,6 @@
         });
     });
     </script>
-
-    <!-- Bottom Ad -->
-    <div class="ad-container ad-bottom">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3600813755953882"
-             data-ad-slot="auto"
-             data-ad-format="horizontal"></ins>
-        <script>
-             if (window.location.protocol !== 'file:') {
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-             }
-        </script>
-    </div>
-
-    <!-- Interstitial Ad Container -->
-    <div class="ad-container ad-interstitial hidden" id="interstitial-ad">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3600813755953882"
-             data-ad-slot="auto"
-             data-ad-format="vertical"></ins>
-        <script>
-             if (window.location.protocol !== 'file:') {
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-             }
-        </script>
-    </div>
 
     <!-- GA4 Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
