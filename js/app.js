@@ -81,9 +81,7 @@ class Game2048 {
         this.updateScore();
         this.setupEventListeners();
         this.registerServiceWorker();
-        this.trackEvent('session_ready', {
-            restored: !freshGame && Boolean(localStorage.getItem('puzzle2048_gameState')) ? 'true' : 'false'
-        });
+        this.trackEvent('session_ready');
     }
 
     createEmptyGrid() {
@@ -226,7 +224,7 @@ class Game2048 {
             this.updateMoveCounter();
             if (!this.firstMoveTracked) {
                 this.firstMoveTracked = true;
-                this.trackEvent('first_move', { direction });
+                this.trackEvent('first_move');
             }
             // Combo tracking
             if (mergedThisMove) {
@@ -251,25 +249,19 @@ class Game2048 {
 
                 if (this.won && !this.keepPlaying) {
                     this.showVictoryModal();
-                    this.trackEvent('victory', { score: this.score });
+                    this.trackEvent('victory');
                 } else if (!this.movesAvailable()) {
                     this.gameOver = true;
                     this.clearGameState();
                     this.playSound('gameOver');
-                    if (typeof GameAds !== 'undefined') {
-                        GameAds.showInterstitial({ onComplete: () => {
-                            this.showGameOverModal();
-                        } });
-                    } else {
-                        this.showGameOverModal();
-                    }
-                    this.trackEvent('gameOver', { score: this.score, best: this.bestScore });
+                    this.showGameOverModal();
+                    this.trackEvent('gameOver');
                 } else {
                     this.saveGameState();
                 }
             }, 160);
 
-            this.trackEvent('move', { direction, score: this.score });
+            this.trackEvent('move');
         }
     }
 
@@ -481,19 +473,6 @@ class Game2048 {
             });
         }
 
-        // Rewarded ad: watch ad for 2x score
-        if (typeof GameAds !== 'undefined') {
-            GameAds.injectRewardButton({
-                container: '#game-over-modal',
-                label: 'Watch Ad for 2x Score',
-                onReward: () => {
-                    this.score *= 2;
-                    document.getElementById('final-score').textContent = this.score;
-                    this.updateScore();
-                    this.trackEvent('rewardedAd', { type: '2x_score', score: this.score });
-                }
-            });
-        }
     }
 
     showVictoryModal() {
@@ -545,16 +524,15 @@ class Game2048 {
                 if (btn) { const orig = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = orig, 1500); }
             }).catch(() => {});
         }
-        this.trackEvent('share', { score: this.score });
+        this.trackEvent('share');
     }
 
     newGame() {
-        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-modal');
         this.gameOverModal.classList.add('hidden');
         this.victoryModal.classList.add('hidden');
         this.clearGameState();
         this.init(true);
-        this.trackEvent('newGame', { bestScore: this.bestScore });
+        this.trackEvent('newGame');
     }
 
     // ========== UNDO ==========
@@ -588,7 +566,7 @@ class Game2048 {
         this.render();
         this.updateScore();
         this.playSound('undo');
-        this.trackEvent('undo', { score: this.score });
+        this.trackEvent('undo');
     }
 
     // ========== EVENT LISTENERS ==========
@@ -897,12 +875,11 @@ class Game2048 {
 
     // ========== ANALYTICS ==========
 
-    trackEvent(name, data = {}) {
+    trackEvent(name) {
         if (window.gtag) {
             gtag('event', `puzzle2048_${name}`, {
                 event_category: 'puzzle_2048',
-                entry_surface: this.entrySurface || 'direct',
-                ...data
+                entry_surface: this.entrySurface || 'direct'
             });
         }
     }
@@ -957,8 +934,6 @@ if (document.readyState === 'loading') {
 if (typeof DailyStreak !== 'undefined') {
     DailyStreak.init({ gameId: 'puzzle-2048', bestScoreKey: 'puzzle2048_bestScore', minTarget: 500, unit: 'pts' });
 }
-
-if (typeof GameAds !== 'undefined') GameAds.init();
 
 if (typeof GameAchievements !== 'undefined') GameAchievements.init({
     gameId: 'puzzle-2048',
