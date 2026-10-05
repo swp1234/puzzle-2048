@@ -108,6 +108,23 @@
       <p class="fine">Movement rules follow the <a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="noopener">original open-source 2048 implementation ↗</a>. The evaluation heuristic is explained above and is independent of that project.</p>
     </section>
 
+    <section class="panel faq-section" aria-labelledby="faqTitle">
+      <p class="kicker" data-i18n="faqKicker">FREQUENTLY ASKED QUESTIONS</p>
+      <h2 id="faqTitle" data-i18n="faqTitle">2048 Strategy &amp; Analyzer FAQ</h2>
+      <details class="faq-item">
+        <summary data-i18n="faqQ1">How does the 2048 board analyzer choose a move?</summary>
+        <p data-i18n="faqA1">It applies the standard slide-and-merge rules to all four directions, discards moves that do not change the board, and compares immediate merge points, empty cells, merge opportunities, smoothness, monotonic order and whether the largest tile stays in a corner. It also evaluates one expected random-tile step ahead.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faqQ2">Does the recommendation guarantee the best 2048 move?</summary>
+        <p data-i18n="faqA2">No. A new 2 or 4 tile appears randomly after each move, so no short analysis can guarantee the globally optimal play. The coach explains its heuristic and lets you inspect every legal preview.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faqQ3">Is my 2048 board uploaded?</summary>
+        <p data-i18n="faqA3">No. Board calculation and optional last-board storage happen inside the current browser. Tile values are not sent with analytics.</p>
+      </details>
+    </section>
+
     <section class="next-links">
       <a href="./" data-preserve-lang data-destination="play"><span>🎮</span><div><strong data-i18n="playCard">Play 2048</strong><small data-i18n="playCardBody">Test the idea on the live board</small></div></a>
       <a id="guideLink" href="/portal/blog/en/number-puzzle-2048-tips.html" data-destination="guide"><span>📖</span><div><strong data-i18n="guideCard">2048 strategy guide</strong><small data-i18n="guideCardBody">Learn corner chains and board control</small></div></a>
